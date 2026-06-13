@@ -12,8 +12,11 @@ export default function Home() {
     <>
       <Navbar />
       <main className="flex-1">
-        <HeroSection />
-        <AboutSection />
+        {/* Shared background spanning the hero + about sections (single image). */}
+        <div className="bg-[url('/homepage/background_about.jpg')] bg-cover bg-center bg-no-repeat">
+          <HeroSection />
+          <AboutSection />
+        </div>
         <PortfolioSection />
         <ProcessSection />
         <ReferencesSection />

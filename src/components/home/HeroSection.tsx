@@ -3,7 +3,7 @@ import { ButtonLink } from "@/components/ui/Button";
 /** Landing hero with the headline, intro copy and a portfolio CTA. */
 export function HeroSection() {
   return (
-    <section className="bg-brand-gradient px-6 pb-24 pt-36 sm:px-8 md:pb-32 md:pt-44">
+    <section className="px-6 pb-24 pt-36 sm:px-8 md:pb-32 md:pt-44">
       <div className="mx-auto flex max-w-3xl flex-col items-center gap-6 text-center">
         <h1 className="text-4xl font-bold leading-tight tracking-tight text-white sm:text-5xl md:text-6xl">
           Kreativní design, který{" "}

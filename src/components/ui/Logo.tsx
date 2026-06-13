@@ -1,27 +1,40 @@
+import Image from "next/image";
 import Link from "next/link";
 import { cn } from "@/lib/cn";
 
 interface LogoProps {
-  /** Tailwind text-color class for the mark, e.g. "text-white". */
+  /**
+   * "dark" renders the navy monogram as-is (light backgrounds);
+   * "light" inverts it to white for dark backgrounds.
+   */
+  variant?: "dark" | "light";
+  /** Extra classes for the link wrapper. */
   className?: string;
   /** Accessible label / link target. Defaults to the homepage. */
   href?: string;
 }
 
 /**
- * The "KH" monogram (Kateřina Hršelová), rendered in the brand serif.
+ * The "KH" monogram (Kateřina Hršelová) logo, linking to the homepage.
  */
-export function Logo({ className, href = "/" }: LogoProps) {
+export function Logo({ variant = "dark", className, href = "/" }: LogoProps) {
   return (
     <Link
       href={href}
       aria-label="Kateřina Hršelová — domů"
-      className={cn(
-        "font-serif text-2xl font-bold tracking-tight",
-        className ?? "text-brand-dark",
-      )}
+      className={cn("inline-flex", className)}
     >
-      KH
+      <Image
+        src="/homepage/logo.png"
+        alt=""
+        width={120}
+        height={76}
+        priority
+        className={cn(
+          "h-9 w-auto",
+          variant === "light" && "brightness-0 invert",
+        )}
+      />
     </Link>
   );
 }

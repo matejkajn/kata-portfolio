@@ -1,17 +1,20 @@
 import type { Metadata } from "next";
-import { Inter, Playfair_Display } from "next/font/google";
+import localFont from "next/font/local";
 import "./globals.css";
 
-const inter = Inter({
-  variable: "--font-inter",
-  subsets: ["latin", "latin-ext"],
-  display: "swap",
-});
-
-const playfair = Playfair_Display({
-  variable: "--font-playfair",
-  subsets: ["latin", "latin-ext"],
-  weight: ["600", "700"],
+const dmSans = localFont({
+  src: [
+    {
+      path: "./fonts/DMSans-VariableFont_opsz,wght.ttf",
+      style: "normal",
+    },
+    {
+      path: "./fonts/DMSans-Italic-VariableFont_opsz,wght.ttf",
+      style: "italic",
+    },
+  ],
+  variable: "--font-dm-sans",
+  weight: "100 1000",
   display: "swap",
 });
 
@@ -29,7 +32,7 @@ export default function RootLayout({
   return (
     <html
       lang="cs"
-      className={`${inter.variable} ${playfair.variable} h-full antialiased`}
+      className={`${dmSans.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col">{children}</body>
     </html>

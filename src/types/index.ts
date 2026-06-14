@@ -21,6 +21,24 @@ export interface Project {
   imageColor?: string;
 }
 
+/** A single image belonging to a project (gallery / case-study body). */
+export interface ProjectImage {
+  url: string;
+  /** Accessible description; may be empty if none was provided. */
+  alt: string;
+}
+
+/**
+ * A project with its full case-study content. Returned for the detail page;
+ * the listing grid only needs the lighter {@link Project}.
+ */
+export interface ProjectDetail extends Project {
+  /** Case-study body text. */
+  description: string | null;
+  /** Gallery images, ordered for display. */
+  images: ProjectImage[];
+}
+
 /** One step in the "kreativní proces" timeline. */
 export interface ProcessStep {
   /** Pill label, e.g. "Analýza". */

@@ -6,7 +6,7 @@ import { ReferenceCard } from "./ReferenceCard";
 /** "Reference klientů" — testimonials from past clients. */
 export function ReferencesSection() {
   return (
-    <Section id="reference" maxWidth="max-w-7xl">
+    <Section id="reference" maxWidth="max-w-[88rem]">
       <SectionHeading
         title="Reference klientů"
         subtitle="Co říkají moji spokojení klienti o naší spolupráci."

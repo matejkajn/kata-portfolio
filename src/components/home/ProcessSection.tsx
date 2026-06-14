@@ -8,7 +8,7 @@ export function ProcessSection() {
   return (
     <Section
       id="proces"
-      maxWidth="max-w-7xl"
+      maxWidth="max-w-[88rem]"
       className="bg-[url('/homepage/background2.jpg')] bg-cover bg-center bg-no-repeat"
     >
       <SectionHeading

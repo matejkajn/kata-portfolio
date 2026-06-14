@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { Section } from "@/components/layout/Section";
 import { ButtonLink } from "@/components/ui/Button";
 
@@ -8,13 +9,22 @@ import { ButtonLink } from "@/components/ui/Button";
 export function ProjectCta() {
   return (
     <Section>
-      <div className="flex flex-col items-center gap-8 rounded-3xl bg-brand-gradient px-6 py-16 text-center sm:py-20">
-        <h2 className="max-w-2xl text-3xl font-bold tracking-tight text-white sm:text-4xl">
-          Pojďme vytvořit něco <span className="text-accent">výjimečného</span>
-        </h2>
-        <ButtonLink href="/#kontakt" variant="accent">
-          Kontakt
-        </ButtonLink>
+      <div className="relative isolate overflow-hidden rounded-3xl">
+        <Image
+          src="/footer/cta.png"
+          alt=""
+          fill
+          sizes="(min-width: 1280px) 1216px, 100vw"
+          className="-z-10 object-cover"
+        />
+        <div className="flex flex-col items-center gap-8 px-6 py-16 text-center sm:py-20">
+          <h2 className="max-w-2xl text-3xl font-bold tracking-tight text-white sm:text-4xl">
+            Pojďme vytvořit něco <span className="text-accent">výjimečného</span>
+          </h2>
+          <ButtonLink href="/#kontakt" variant="accent">
+            Kontakt
+          </ButtonLink>
+        </div>
       </div>
     </Section>
   );

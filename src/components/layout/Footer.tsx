@@ -36,7 +36,7 @@ export function Footer() {
             </a>
 
             <a
-              href="https://www.linkedin.com/"
+              href="https://www.linkedin.com/in/kateřina-hršelová-35a324279"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-3 text-sm text-muted hover:text-brand"

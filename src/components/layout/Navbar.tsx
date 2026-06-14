@@ -30,7 +30,7 @@ export function Navbar() {
             "flex items-center justify-between rounded-full border py-2 pl-6 pr-2 transition-all duration-300",
             isLight
               ? "border-transparent bg-white shadow-lg shadow-brand-dark/10"
-              : "border-white/15 bg-transparent",
+              : "border-white/15 bg-white/5 backdrop-blur-md",
           )}
         >
           <Logo variant={isLight ? "dark" : "light"} />

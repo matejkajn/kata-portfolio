@@ -6,7 +6,10 @@ import { ProcessStep } from "./ProcessStep";
 /** "Jak probíhá kreativní proces" — alternating timeline of the four steps. */
 export function ProcessSection() {
   return (
-    <Section id="proces" className="bg-brand-gradient">
+    <Section
+      id="proces"
+      className="bg-[url('/homepage/background2.jpg')] bg-cover bg-center bg-no-repeat"
+    >
       <SectionHeading
         inverted
         title={

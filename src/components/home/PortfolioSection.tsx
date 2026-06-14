@@ -13,7 +13,7 @@ export async function PortfolioSection() {
   const hasMore = projects.length > FEATURED_COUNT;
 
   return (
-    <Section id="portfolio">
+    <Section id="portfolio" maxWidth="max-w-7xl">
       <SectionHeading
         title="Moje portfolio"
         subtitle="Ukázky projektů, které ukazují můj tvůrčí přístup a schopnost vytvářet jedinečné vizuální řešení."

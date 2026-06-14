@@ -8,6 +8,7 @@ export function ContactSection() {
   return (
     <Section
       id="kontakt"
+      maxWidth="max-w-7xl"
       innerClassName="grid items-center gap-12 overflow-hidden rounded-[2.5rem] bg-[url('/homepage/background3.png')] bg-cover bg-center bg-no-repeat px-8 py-14 md:grid-cols-2 md:px-16 md:py-20"
     >
       <div className="flex flex-col gap-6">

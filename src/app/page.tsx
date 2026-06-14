@@ -29,7 +29,7 @@ export default function Home() {
         <div data-nav-theme="light">
           <ReferencesSection />
         </div>
-        <div data-nav-theme="dark">
+        <div data-nav-theme="light">
           <ContactSection />
         </div>
       </main>

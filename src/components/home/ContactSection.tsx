@@ -1,5 +1,6 @@
+import Image from "next/image";
+
 import { Section } from "@/components/layout/Section";
-import { ImagePlaceholder } from "@/components/ui/ImagePlaceholder";
 import { ContactForm } from "./ContactForm";
 
 /** "Pojďme vytvořit něco výjimečného" — closing call-to-action with form. */
@@ -7,8 +8,7 @@ export function ContactSection() {
   return (
     <Section
       id="kontakt"
-      className="bg-brand-gradient"
-      innerClassName="grid items-center gap-12 md:grid-cols-2"
+      innerClassName="grid items-center gap-12 overflow-hidden rounded-[2.5rem] bg-[url('/homepage/background3.png')] bg-cover bg-center bg-no-repeat px-8 py-14 md:grid-cols-2 md:px-16 md:py-20"
     >
       <div className="flex flex-col gap-6">
         <div className="flex flex-col gap-3">
@@ -24,9 +24,12 @@ export function ContactSection() {
         <ContactForm />
       </div>
 
-      <ImagePlaceholder
-        color="#1f2228"
-        className="aspect-square w-full rounded-2xl"
+      <Image
+        src="/footer/form.jpg"
+        alt="Ukázka realizace — logo Active Estate"
+        width={420}
+        height={466}
+        className="aspect-[4/5] w-full rounded-2xl object-cover"
       />
     </Section>
   );

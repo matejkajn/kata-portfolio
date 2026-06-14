@@ -16,13 +16,13 @@ export function ReferenceCard({ reference }: ReferenceCardProps) {
           alt={`Logo ${reference.author}`}
           width={reference.logoWidth ?? 205}
           height={reference.logoHeight ?? 82}
-          className="h-[82px] w-auto object-contain"
+          className="max-h-6 w-auto object-contain"
         />
       ) : (
         <ImagePlaceholder
           label="logo"
           color="#eef0f4"
-          className="h-12 w-28 rounded-md text-ink"
+          className="h-6 w-16 rounded-md text-ink"
         />
       )}
       <blockquote className="text-sm leading-relaxed text-muted">

@@ -21,7 +21,7 @@ export function ProcessSection() {
         subtitle="Provedu vás celou spoluprací krok za krokem — od prvního setkání až po předání hotových materiálů."
       />
 
-      <div className="relative mt-16">
+      <div className="relative mt-16 overflow-x-clip">
         {/* Timeline spine: left on mobile, centered on desktop. */}
         <span
           aria-hidden="true"

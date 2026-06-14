@@ -7,6 +7,7 @@ export function AboutSection() {
   return (
     <Section
       id="o-mne"
+      maxWidth="max-w-[88rem]"
       innerClassName="grid items-center gap-12 md:grid-cols-2"
     >
       <div className="flex flex-col gap-5">

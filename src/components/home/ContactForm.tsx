@@ -16,14 +16,14 @@ const FIELDS: Array<{
 ];
 
 const inputClass =
-  "w-full rounded-lg border border-white/25 bg-white/5 px-4 py-3 text-sm text-white placeholder:text-white/50 focus:border-accent focus:outline-none";
+  "w-full border-0 border-b border-white/30 bg-transparent px-0 py-2 text-base text-white placeholder:text-white/55 focus:border-accent focus:outline-none focus:ring-0";
 
 /** Controlled contact form. State/logic live in `useContactForm`. */
 export function ContactForm() {
   const { values, status, setField, handleSubmit } = useContactForm();
 
   return (
-    <form onSubmit={handleSubmit} className="flex flex-col gap-4">
+    <form onSubmit={handleSubmit} className="flex flex-col gap-7">
       {FIELDS.map((field) => (
         <input
           key={field.name}
@@ -39,20 +39,20 @@ export function ContactForm() {
 
       <textarea
         required
-        rows={4}
+        rows={2}
         placeholder="Zpráva"
         aria-label="Zpráva"
         value={values.message}
         onChange={(e) => setField("message", e.target.value)}
-        className={inputClass}
+        className={`${inputClass} resize-none`}
       />
 
-      <div className="flex items-center gap-4">
+      <div className="mt-2 flex items-center gap-4">
         <Button
           type="submit"
           variant="accent"
           disabled={status === "submitting"}
-          className="disabled:opacity-60"
+          className="px-10 py-3 text-base font-semibold disabled:opacity-60"
         >
           {status === "submitting" ? "Odesílám…" : "Odeslat"}
         </Button>

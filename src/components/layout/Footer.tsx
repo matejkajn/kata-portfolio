@@ -36,7 +36,7 @@ export function Footer() {
             </a>
 
             <a
-              href="https://www.linkedin.com/"
+              href="https://www.linkedin.com/in/kateřina-hršelová-35a324279"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-3 text-sm text-muted hover:text-brand"
@@ -54,7 +54,7 @@ export function Footer() {
         </div>
 
         <p className="text-right text-xs text-muted">
-          © 2025 Kateřina Hršelová. All rights reserved.
+          © 2026 Kateřina Hršelová. All rights reserved.
         </p>
       </div>
     </footer>

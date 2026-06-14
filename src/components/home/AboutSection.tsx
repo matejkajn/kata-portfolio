@@ -36,7 +36,7 @@ export function AboutSection() {
         alt="Portrét Kateřiny"
         width={444}
         height={582}
-        className="aspect-[4/5] w-full rounded-2xl object-cover"
+        className="aspect-[4/5] w-full max-w-[444px] justify-self-center rounded-[40px] object-cover md:justify-self-end"
       />
     </Section>
   );

@@ -57,6 +57,10 @@ export interface Reference {
   role: string;
   /** Optional logo image URL. */
   logoUrl?: string;
+  /** Intrinsic logo width in px (for next/image aspect ratio). */
+  logoWidth?: number;
+  /** Intrinsic logo height in px (for next/image aspect ratio). */
+  logoHeight?: number;
 }
 
 /** A primary navigation entry. */

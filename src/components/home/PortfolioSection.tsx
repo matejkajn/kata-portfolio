@@ -1,11 +1,14 @@
 import { Section } from "@/components/layout/Section";
 import { ButtonLink } from "@/components/ui/Button";
 import { SectionHeading } from "@/components/ui/SectionHeading";
-import { FEATURED_PROJECTS } from "@/lib/content/projects";
+import { getProjects } from "@/lib/supabase/projects";
 import { ProjectCard } from "./ProjectCard";
 
 /** "Moje portfolio" — featured project grid with a link to the full list. */
-export function PortfolioSection() {
+export async function PortfolioSection() {
+  const projects = await getProjects();
+  const featured = projects.slice(0, 4);
+
   return (
     <Section id="portfolio">
       <SectionHeading
@@ -14,7 +17,7 @@ export function PortfolioSection() {
       />
 
       <div className="mt-12 grid grid-cols-2 gap-6 md:gap-8">
-        {FEATURED_PROJECTS.map((project) => (
+        {featured.map((project) => (
           <ProjectCard key={project.slug} project={project} />
         ))}
       </div>

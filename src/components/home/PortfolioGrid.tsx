@@ -1,36 +1,26 @@
-"use client";
-
-import { useState } from "react";
-import { Button } from "@/components/ui/Button";
+import { ButtonLink } from "@/components/ui/Button";
 import type { Project } from "@/types";
 import { ProjectCard } from "./ProjectCard";
 
 interface PortfolioGridProps {
   projects: Project[];
-  /** How many projects to show before the "Zobrazit více" button is clicked. */
-  initialCount?: number;
+  /** When set, renders a "Zobrazit více" link to the full listing below the grid. */
+  moreHref?: string;
 }
 
-/** Project grid that reveals the remaining previews on demand. */
-export function PortfolioGrid({
-  projects,
-  initialCount = 4,
-}: PortfolioGridProps) {
-  const [expanded, setExpanded] = useState(false);
-  const visible = expanded ? projects : projects.slice(0, initialCount);
-  const hasMore = projects.length > initialCount;
-
+/** Two-column grid of project previews, optionally followed by a link to the full listing. */
+export function PortfolioGrid({ projects, moreHref }: PortfolioGridProps) {
   return (
     <>
       <div className="mt-12 grid grid-cols-2 gap-6 md:gap-8">
-        {visible.map((project) => (
+        {projects.map((project) => (
           <ProjectCard key={project.slug} project={project} />
         ))}
       </div>
 
-      {hasMore && !expanded && (
+      {moreHref && (
         <div className="mt-12 flex justify-center">
-          <Button onClick={() => setExpanded(true)}>Zobrazit více</Button>
+          <ButtonLink href={moreHref}>Zobrazit více</ButtonLink>
         </div>
       )}
     </>

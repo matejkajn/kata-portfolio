@@ -54,7 +54,7 @@ export function Footer() {
         </div>
 
         <p className="text-right text-xs text-muted">
-          © 2025 Kateřina Hršelová. All rights reserved.
+          © 2026 Kateřina Hršelová. All rights reserved.
         </p>
       </div>
     </footer>

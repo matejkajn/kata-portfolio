@@ -10,6 +10,8 @@ interface LogoProps {
   variant?: "dark" | "light";
   /** Extra classes for the link wrapper. */
   className?: string;
+  /** Extra classes for the monogram image (e.g. to override its height). */
+  imageClassName?: string;
   /** Accessible label / link target. Defaults to the homepage. */
   href?: string;
 }
@@ -17,7 +19,12 @@ interface LogoProps {
 /**
  * The "KH" monogram (Kateřina Hršelová) logo, linking to the homepage.
  */
-export function Logo({ variant = "dark", className, href = "/" }: LogoProps) {
+export function Logo({
+  variant = "dark",
+  className,
+  imageClassName = "h-9 w-auto",
+  href = "/",
+}: LogoProps) {
   return (
     <Link
       href={href}
@@ -31,7 +38,7 @@ export function Logo({ variant = "dark", className, href = "/" }: LogoProps) {
         height={76}
         priority
         className={cn(
-          "h-9 w-auto",
+          imageClassName,
           variant === "light" && "brightness-0 invert",
         )}
       />

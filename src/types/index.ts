@@ -1,10 +1,9 @@
 /**
  * Shared domain types for the portfolio site.
  *
- * These describe the content the public site renders. For Iteration 1 the
- * content is served from the static modules in `src/lib/content`; the same
- * shapes are intended to back the Supabase-sourced data later, so components
- * never need to change when the data layer is swapped.
+ * These describe the content the public site renders. The data layer in
+ * `src/lib/supabase` maps Supabase rows onto them; `src/lib/content` holds the
+ * defaults used until the database has been populated.
  */
 
 /** A single portfolio project / case study. */
@@ -15,7 +14,7 @@ export interface Project {
   title: string;
   /** Comma-separated work tags, e.g. "logotvorba, vizuální identita". */
   tags: string;
-  /** Cover image URL (Supabase storage later; placeholder for now). */
+  /** Cover image URL (Supabase storage); a placeholder renders when absent. */
   imageUrl?: string;
   /** Optional solid background used by the placeholder cover. */
   imageColor?: string;
@@ -41,6 +40,8 @@ export interface ProjectDetail extends Project {
 
 /** One step in the "kreativní proces" timeline. */
 export interface ProcessStep {
+  /** Database id; absent for the built-in defaults. */
+  id?: string;
   /** Pill label, e.g. "Analýza". */
   label: string;
   /** Description paragraph. */
@@ -49,6 +50,8 @@ export interface ProcessStep {
 
 /** A client testimonial. */
 export interface Reference {
+  /** Database id; absent for the built-in defaults. */
+  id?: string;
   /** Quote body. */
   quote: string;
   /** Client name. */
@@ -68,3 +71,66 @@ export interface NavLink {
   label: string;
   href: string;
 }
+
+/**
+ * All editable site-wide copy, grouped by page section. Stored as one JSON
+ * document in `site_settings.content`.
+ *
+ * Heading fields support light markup (see `HighlightedText`): `*word*`
+ * renders in the accent colour and a newline forces a line break.
+ */
+export interface SiteSettings {
+  seo: {
+    title: string;
+    description: string;
+  };
+  hero: {
+    title: string;
+    text: string;
+    buttonLabel: string;
+  };
+  about: {
+    label: string;
+    heading: string;
+    /** Paragraphs separated by blank lines. */
+    text: string;
+    imageUrl: string;
+    imageAlt: string;
+  };
+  portfolio: {
+    heading: string;
+    subtitle: string;
+    /** How many projects the homepage shows before "Zobrazit více". */
+    featuredCount: number;
+    moreLabel: string;
+  };
+  process: {
+    heading: string;
+    subtitle: string;
+  };
+  references: {
+    heading: string;
+    subtitle: string;
+  };
+  contact: {
+    heading: string;
+    text: string;
+    imageUrl: string;
+    imageAlt: string;
+    successMessage: string;
+  };
+  cta: {
+    heading: string;
+    buttonLabel: string;
+  };
+  footer: {
+    email: string;
+    instagramLabel: string;
+    instagramUrl: string;
+    linkedinLabel: string;
+    linkedinUrl: string;
+    copyright: string;
+  };
+}
+
+export type SiteSettingsSection = keyof SiteSettings;

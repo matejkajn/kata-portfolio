@@ -58,11 +58,7 @@ export async function getProjectBySlug(slug: string): Promise<ProjectDetail | nu
     return null;
   }
 
-  // The minimal `Database` generic doesn't model table relationships, so the
-  // nested embed isn't inferred — assert the shape we selected.
-  const { project_images, ...row } = data as ProjectRow & {
-    project_images: ProjectImageRow[];
-  };
+  const { project_images, ...row } = data;
   return {
     ...toProject(row),
     description: row.description,

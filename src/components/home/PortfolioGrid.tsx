@@ -6,10 +6,15 @@ interface PortfolioGridProps {
   projects: Project[];
   /** When set, renders a "Zobrazit více" link to the full listing below the grid. */
   moreHref?: string;
+  moreLabel?: string;
 }
 
 /** Two-column grid of project previews, optionally followed by a link to the full listing. */
-export function PortfolioGrid({ projects, moreHref }: PortfolioGridProps) {
+export function PortfolioGrid({
+  projects,
+  moreHref,
+  moreLabel = "Zobrazit více",
+}: PortfolioGridProps) {
   return (
     <>
       <div className="mt-12 grid grid-cols-2 gap-6 md:gap-8">
@@ -20,7 +25,7 @@ export function PortfolioGrid({ projects, moreHref }: PortfolioGridProps) {
 
       {moreHref && (
         <div className="mt-12 flex justify-center">
-          <ButtonLink href={moreHref}>Zobrazit více</ButtonLink>
+          <ButtonLink href={moreHref}>{moreLabel}</ButtonLink>
         </div>
       )}
     </>

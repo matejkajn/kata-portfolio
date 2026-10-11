@@ -6,8 +6,19 @@ import { PortfolioSection } from "@/components/home/PortfolioSection";
 import { ProcessSection } from "@/components/home/ProcessSection";
 import { ReferencesSection } from "@/components/home/ReferencesSection";
 import { ContactSection } from "@/components/home/ContactSection";
+import {
+  getProcessSteps,
+  getReferences,
+  getSiteSettings,
+} from "@/lib/supabase/content";
 
-export default function Home() {
+export default async function Home() {
+  const [settings, steps, references] = await Promise.all([
+    getSiteSettings(),
+    getProcessSteps(),
+    getReferences(),
+  ]);
+
   return (
     <>
       <Navbar />
@@ -17,24 +28,27 @@ export default function Home() {
           data-nav-theme="dark"
           className="bg-[url('/homepage/background_about.jpg')] bg-cover bg-center bg-no-repeat"
         >
-          <HeroSection />
-          <AboutSection />
+          <HeroSection content={settings.hero} />
+          <AboutSection content={settings.about} />
         </div>
         <div data-nav-theme="light">
-          <PortfolioSection />
+          <PortfolioSection content={settings.portfolio} />
         </div>
         <div data-nav-theme="dark">
-          <ProcessSection />
+          <ProcessSection content={settings.process} steps={steps} />
         </div>
         <div data-nav-theme="light">
-          <ReferencesSection />
+          <ReferencesSection
+            content={settings.references}
+            references={references}
+          />
         </div>
         <div data-nav-theme="light">
-          <ContactSection />
+          <ContactSection content={settings.contact} />
         </div>
       </main>
       <div data-nav-theme="light">
-        <Footer />
+        <Footer content={settings.footer} />
       </div>
     </>
   );

@@ -18,8 +18,13 @@ const FIELDS: Array<{
 const inputClass =
   "w-full border-0 border-b border-white/30 bg-transparent px-0 py-2 text-base text-white placeholder:text-white/55 focus:border-accent focus:outline-none focus:ring-0";
 
+interface ContactFormProps {
+  /** Thank-you note shown after a successful submit. */
+  successMessage: string;
+}
+
 /** Controlled contact form. State/logic live in `useContactForm`. */
-export function ContactForm() {
+export function ContactForm({ successMessage }: ContactFormProps) {
   const { values, status, setField, handleSubmit } = useContactForm();
 
   return (
@@ -58,7 +63,7 @@ export function ContactForm() {
         </Button>
         {status === "success" && (
           <span className="text-sm text-white/80" role="status">
-            Děkuji, ozvu se vám co nejdříve.
+            {successMessage}
           </span>
         )}
         {status === "error" && (

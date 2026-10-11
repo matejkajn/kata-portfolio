@@ -7,6 +7,7 @@ import { ProjectHeader } from "@/components/project/ProjectHeader";
 import { ProjectOverview } from "@/components/project/ProjectOverview";
 import { ProjectGallery } from "@/components/project/ProjectGallery";
 import { ProjectCta } from "@/components/project/ProjectCta";
+import { getSiteSettings } from "@/lib/supabase/content";
 import { getProjectBySlug, getProjects } from "@/lib/supabase/projects";
 import type { ProjectImage } from "@/types";
 
@@ -38,7 +39,10 @@ export async function generateMetadata({
 
 export default async function ProjectPage({ params }: ProjectPageProps) {
   const { slug } = await params;
-  const project = await getProjectBySlug(slug);
+  const [project, settings] = await Promise.all([
+    getProjectBySlug(slug),
+    getSiteSettings(),
+  ]);
 
   if (!project) {
     notFound();
@@ -66,10 +70,10 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
           </div>
         </article>
 
-        <ProjectCta />
+        <ProjectCta content={settings.cta} />
       </main>
       <div data-nav-theme="light">
-        <Footer />
+        <Footer content={settings.footer} />
       </div>
     </>
   );

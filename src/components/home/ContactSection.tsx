@@ -1,10 +1,16 @@
 import Image from "next/image";
 
 import { Section } from "@/components/layout/Section";
+import { HighlightedText } from "@/components/ui/HighlightedText";
+import type { SiteSettings } from "@/types";
 import { ContactForm } from "./ContactForm";
 
+interface ContactSectionProps {
+  content: SiteSettings["contact"];
+}
+
 /** "Pojďme vytvořit něco výjimečného" — closing call-to-action with form. */
-export function ContactSection() {
+export function ContactSection({ content }: ContactSectionProps) {
   return (
     <Section
       id="kontakt"
@@ -14,20 +20,18 @@ export function ContactSection() {
       <div className="flex flex-col gap-6">
         <div className="flex flex-col gap-3">
           <h2 className="text-3xl font-bold tracking-tight text-white sm:text-4xl">
-            Pojďme vytvořit něco{" "}
-            <span className="text-accent">výjimečného</span>
+            <HighlightedText text={content.heading} />
           </h2>
           <p className="max-w-md text-base leading-relaxed text-white/75">
-            Máte projekt, který čeká na kreativní zpracování? Nebojte se mě
-            kontaktovat.
+            {content.text}
           </p>
         </div>
-        <ContactForm />
+        <ContactForm successMessage={content.successMessage} />
       </div>
 
       <Image
-        src="/footer/form.jpg"
-        alt="Ukázka realizace — logo Active Estate"
+        src={content.imageUrl}
+        alt={content.imageAlt}
         width={420}
         height={466}
         className="aspect-[4/5] w-full rounded-2xl object-cover"

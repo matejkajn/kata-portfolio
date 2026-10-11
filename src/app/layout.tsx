@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
+import { getSiteSettings } from "@/lib/supabase/content";
 import "./globals.css";
 
 const dmSans = localFont({
@@ -18,11 +19,10 @@ const dmSans = localFont({
   display: "swap",
 });
 
-export const metadata: Metadata = {
-  title: "Kateřina Hršelová — Grafická designérka",
-  description:
-    "Vytvářím vizuální identity, které zaujmou a vyprávějí příběh vaší firmy. Kreativní design, který promlouvá.",
-};
+export async function generateMetadata(): Promise<Metadata> {
+  const { seo } = await getSiteSettings();
+  return { title: seo.title, description: seo.description };
+}
 
 export default function RootLayout({
   children,

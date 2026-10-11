@@ -1,17 +1,10 @@
+import { toParagraphs } from "@/lib/text";
+
 interface ProjectOverviewProps {
   /** Comma-separated work tags, e.g. "logotvorba". */
   tags: string;
   /** Case-study body text; paragraphs are separated by blank lines. */
   description: string | null;
-}
-
-/** Split a description into paragraphs on blank lines, dropping empties. */
-function toParagraphs(description: string | null): string[] {
-  if (!description) return [];
-  return description
-    .split(/\n\s*\n/)
-    .map((paragraph) => paragraph.trim())
-    .filter(Boolean);
 }
 
 /**

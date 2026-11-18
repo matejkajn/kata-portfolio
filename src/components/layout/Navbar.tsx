@@ -14,7 +14,12 @@ import { MobileMenu } from "./MobileMenu";
  * transparent with white text over dark sections, a white card with dark
  * text over light ones. Collapses to a "Menu" overlay on mobile.
  */
-export function Navbar() {
+interface NavbarProps {
+  /** Logo URL from site settings. */
+  logoUrl?: string;
+}
+
+export function Navbar({ logoUrl }: NavbarProps) {
   const menu = useDisclosure();
   const { containerRef, registerItem, setActiveHref, rect } = useNavIndicator();
   const detectedTheme = useNavTheme();
@@ -33,7 +38,7 @@ export function Navbar() {
               : "border-white/15 bg-white/5 backdrop-blur-md",
           )}
         >
-          <Logo variant={isLight ? "dark" : "light"} />
+          <Logo src={logoUrl} variant={isLight ? "dark" : "light"} />
 
           {/* Desktop navigation */}
           <nav

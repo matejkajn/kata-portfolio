@@ -80,6 +80,10 @@ export interface NavLink {
  * renders in the accent colour and a newline forces a line break.
  */
 export interface SiteSettings {
+  brand: {
+    /** Site logo (local path or storage URL); empty falls back to the default. */
+    logoUrl: string;
+  };
   seo: {
     title: string;
     description: string;

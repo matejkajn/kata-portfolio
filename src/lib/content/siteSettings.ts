@@ -6,6 +6,9 @@ import type { SiteSettings, SiteSettingsSection } from "@/types";
  * administration is used to fill the database.
  */
 export const DEFAULT_SITE_SETTINGS: SiteSettings = {
+  brand: {
+    logoUrl: "/homepage/logo.png",
+  },
   seo: {
     title: "Kateřina Hršelová — Grafická designérka",
     description:

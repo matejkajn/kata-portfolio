@@ -29,6 +29,19 @@ const PARAGRAPHS_HINT = "Odstavce oddělte prázdným řádkem.";
  */
 export const SETTINGS_SCHEMA: SettingsSectionDef[] = [
   {
+    section: "brand",
+    title: "Logo",
+    description: "Zobrazuje se v navigaci, v patičce a v administraci.",
+    fields: [
+      {
+        key: "logoUrl",
+        label: "Logo",
+        kind: "image",
+        hint: "Ideálně PNG nebo SVG s průhledným pozadím. Na tmavém pozadí se logo automaticky zobrazí bíle. Po odebrání se použije výchozí logo.",
+      },
+    ],
+  },
+  {
     section: "hero",
     title: "Úvod (hero)",
     description: "První obrazovka domovské stránky.",

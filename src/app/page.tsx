@@ -21,7 +21,7 @@ export default async function Home() {
 
   return (
     <>
-      <Navbar />
+      <Navbar logoUrl={settings.brand.logoUrl} />
       <main className="flex-1">
         {/* Shared background spanning the hero + about sections (single image). */}
         <div
@@ -48,7 +48,7 @@ export default async function Home() {
         </div>
       </main>
       <div data-nav-theme="light">
-        <Footer content={settings.footer} />
+        <Footer content={settings.footer} logoUrl={settings.brand.logoUrl} />
       </div>
     </>
   );

@@ -59,7 +59,7 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
     <>
       <Navbar logoUrl={settings.brand.logoUrl} />
       <main className="flex-1" data-nav-theme="light">
-        <article className="mx-auto w-full max-w-6xl px-6 pt-28 sm:px-8 md:pt-36">
+        <article className="mx-auto w-full max-w-7xl px-4 pt-28 sm:px-6 md:pt-36">
           <div className="flex flex-col gap-12 md:gap-16">
             <ProjectHeader title={project.title} hero={heroImage} />
             <ProjectOverview

@@ -14,7 +14,7 @@ export function ProcessSection({ content, steps }: ProcessSectionProps) {
   return (
     <Section
       id="proces"
-      maxWidth="max-w-[88rem]"
+      maxWidth="max-w-[96rem]"
       className="bg-wine-fade rounded-[2rem] md:rounded-[40px]"
     >
       <SectionHeading

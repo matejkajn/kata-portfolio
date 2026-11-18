@@ -9,7 +9,7 @@ interface HeroSectionProps {
 /** Landing hero with the headline, intro copy and a portfolio CTA. */
 export function HeroSection({ content }: HeroSectionProps) {
   return (
-    <section className="px-6 pb-24 pt-36 sm:px-8 md:pb-32 md:pt-44">
+    <section className="px-4 pb-24 pt-36 sm:px-6 md:pb-32 md:pt-44">
       <div className="mx-auto flex max-w-5xl flex-col items-center gap-6 text-center">
         <h1 className="text-5xl font-medium leading-[1.05] tracking-normal text-white sm:text-7xl md:text-[104px] md:leading-none">
           <HighlightedText text={content.title} />

@@ -11,8 +11,8 @@ interface FooterProps {
 /** Site footer: monogram, contact details and social links. */
 export function Footer({ content, logoUrl }: FooterProps) {
   return (
-    <footer className="bg-white px-6 py-12 sm:px-8">
-      <div className="mx-auto flex w-full max-w-6xl flex-col gap-12">
+    <footer className="bg-white px-4 py-12 sm:px-6">
+      <div className="mx-auto flex w-full max-w-7xl flex-col gap-12">
         <div className="flex flex-col gap-8 sm:flex-row sm:items-center sm:gap-16">
           <Logo
             src={logoUrl}

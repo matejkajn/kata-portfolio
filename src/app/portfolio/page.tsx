@@ -27,7 +27,7 @@ export default async function PortfolioPage() {
     <>
       <Navbar logoUrl={settings.brand.logoUrl} />
       <main className="flex-1" data-nav-theme="light">
-        <div className="mx-auto w-full max-w-6xl px-6 pt-28 pb-20 sm:px-8 md:pt-36 md:pb-28">
+        <div className="mx-auto w-full max-w-7xl px-4 pt-28 pb-20 sm:px-6 md:pt-36 md:pb-28">
           <SectionHeading
             title={settings.portfolio.heading}
             subtitle={settings.portfolio.subtitle}

@@ -21,11 +21,11 @@ export function Section({
   id,
   className,
   innerClassName,
-  maxWidth = "max-w-6xl",
+  maxWidth = "max-w-7xl",
   children,
 }: SectionProps) {
   return (
-    <section id={id} className={cn("px-6 py-20 sm:px-8 md:py-28", className)}>
+    <section id={id} className={cn("px-4 py-20 sm:px-6 md:py-28", className)}>
       <div className={cn("mx-auto w-full", maxWidth, innerClassName)}>
         {children}
       </div>

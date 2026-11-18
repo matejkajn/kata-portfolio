@@ -13,7 +13,7 @@ export default async function SettingsPage() {
     <>
       <AdminPageHeader
         title="Nastavení webu"
-        description="Texty a obrázky, které se zobrazují napříč celým webem. Změny se projeví po uložení."
+        description="Barvy, texty a obrázky, které se zobrazují napříč celým webem. Změny se projeví po uložení."
       />
       <SettingsForm initial={settings} />
     </>

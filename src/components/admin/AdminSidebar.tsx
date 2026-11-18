@@ -22,7 +22,7 @@ const SITE_LINKS = [
 /** Left-hand navigation: site-wide content, then every project. */
 export function AdminSidebar({ projects, email, logoUrl }: AdminSidebarProps) {
   return (
-    <aside className="bg-brand-gradient flex w-full shrink-0 flex-col gap-8 px-4 py-6 text-white md:sticky md:top-0 md:h-screen md:w-72 md:overflow-y-auto">
+    <aside className="bg-wine-gradient flex w-full shrink-0 flex-col gap-8 px-4 py-6 text-white md:sticky md:top-0 md:h-screen md:w-72 md:overflow-y-auto">
       <div className="flex items-center justify-between px-3">
         <Link href="/admin" className="flex items-center gap-3">
           <LogoImage src={logoUrl} variant="light" className="h-7 w-auto max-w-24" />

@@ -48,7 +48,7 @@ export function ProjectImageUploader({ projectId, folder }: ProjectImageUploader
       onDrop={handleDrop}
       className={cn(
         "flex flex-col items-center gap-3 rounded-xl border-2 border-dashed px-6 py-8 text-center transition-colors",
-        isDragging ? "border-brand bg-brand/5" : "border-line",
+        isDragging ? "border-navy bg-navy/5" : "border-line",
       )}
     >
       <p className="text-sm text-muted">

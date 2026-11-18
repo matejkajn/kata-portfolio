@@ -10,14 +10,14 @@ interface HeroSectionProps {
 export function HeroSection({ content }: HeroSectionProps) {
   return (
     <section className="px-6 pb-24 pt-36 sm:px-8 md:pb-32 md:pt-44">
-      <div className="mx-auto flex max-w-3xl flex-col items-center gap-6 text-center">
-        <h1 className="text-4xl font-medium leading-none tracking-normal text-white sm:text-6xl md:text-[104px]">
+      <div className="mx-auto flex max-w-5xl flex-col items-center gap-6 text-center">
+        <h1 className="text-5xl font-medium leading-[1.05] tracking-normal text-white sm:text-7xl md:text-[104px] md:leading-none">
           <HighlightedText text={content.title} />
         </h1>
-        <p className="max-w-xl text-base leading-relaxed text-white/75 sm:text-lg">
+        <p className="max-w-2xl text-base leading-relaxed text-white/90 sm:text-xl">
           {content.text}
         </p>
-        <ButtonLink href="#portfolio" variant="outline" className="mt-2">
+        <ButtonLink href="#portfolio" variant="glass" className="mt-2 px-12 py-3 text-xl">
           {content.buttonLabel}
         </ButtonLink>
       </div>

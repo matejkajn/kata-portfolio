@@ -34,7 +34,7 @@ export default async function ProjectAdminPage({ params }: ProjectAdminPageProps
           <Link
             href={`/portfolio/${project.slug}`}
             target="_blank"
-            className="text-brand hover:underline"
+            className="text-navy hover:underline"
           >
             Zobrazit na webu ↗
           </Link>

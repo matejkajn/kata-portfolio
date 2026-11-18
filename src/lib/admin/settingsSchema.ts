@@ -1,7 +1,14 @@
 import type { SiteSettings, SiteSettingsSection } from "@/types";
 
 /** How a settings field is edited. */
-export type SettingsFieldKind = "text" | "textarea" | "image" | "number" | "email" | "url";
+export type SettingsFieldKind =
+  | "text"
+  | "textarea"
+  | "image"
+  | "number"
+  | "email"
+  | "url"
+  | "color";
 
 export interface SettingsFieldDef<S extends SiteSettingsSection> {
   key: keyof SiteSettings[S] & string;
@@ -16,6 +23,8 @@ export type SettingsSectionDef = {
     section: S;
     title: string;
     description?: string;
+    /** Lay the fields out in two columns on wider screens (short inputs). */
+    twoColumns?: boolean;
     fields: SettingsFieldDef<S>[];
   };
 }[SiteSettingsSection];
@@ -28,6 +37,64 @@ const PARAGRAPHS_HINT = "Odstavce oddělte prázdným řádkem.";
  * `SiteSettings` + its defaults) is all it takes to make new copy editable.
  */
 export const SETTINGS_SCHEMA: SettingsSectionDef[] = [
+  {
+    section: "theme",
+    title: "Barvy webu",
+    description:
+      "Barevná paleta celého webu. Po uložení se změna projeví na všech stránkách.",
+    twoColumns: true,
+    fields: [
+      {
+        key: "wine",
+        label: "Hlavní vínová",
+        kind: "color",
+        hint: "Pozadí úvodu, procesu a hlaviček referencí; text patičky.",
+      },
+      {
+        key: "wineLight",
+        label: "Světlejší vínová",
+        kind: "color",
+        hint: "Pozadí kontaktu, spodní část sekce procesu.",
+      },
+      {
+        key: "stain",
+        label: "Modrá (skvrny v pozadí)",
+        kind: "color",
+        hint: "Rozmazané pohyblivé skvrny v úvodu a záře v kontaktu.",
+      },
+      {
+        key: "navy",
+        label: "Tmavě modrá",
+        kind: "color",
+        hint: "Nadpisy a tlačítka na bílém pozadí.",
+      },
+      {
+        key: "accent",
+        label: "Zvýraznění",
+        kind: "color",
+        hint: "Slova v *hvězdičkách* v nadpisech a hvězdičky hodnocení.",
+      },
+      {
+        key: "cream",
+        label: "Krémová",
+        kind: "color",
+        hint: "Karty referencí, nadpisy a text tlačítek na tmavém pozadí.",
+      },
+      {
+        key: "blush",
+        label: "Růžová",
+        kind: "color",
+        hint: "Štítky kroků procesu, jména v referencích.",
+      },
+      { key: "ink", label: "Text", kind: "color", hint: "Běžný text na bílém pozadí." },
+      {
+        key: "muted",
+        label: "Doplňkový text",
+        kind: "color",
+        hint: "Copyright a méně důležité popisky.",
+      },
+    ],
+  },
   {
     section: "brand",
     title: "Logo",

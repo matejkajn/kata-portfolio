@@ -34,8 +34,8 @@ export function Navbar({ logoUrl }: NavbarProps) {
           className={cn(
             "flex items-center justify-between rounded-full border py-2 pl-6 pr-2 transition-all duration-300",
             isLight
-              ? "border-transparent bg-white shadow-lg shadow-brand-dark/10"
-              : "border-white/15 bg-white/5 backdrop-blur-md",
+              ? "border-transparent bg-white shadow-lg shadow-wine/10"
+              : "border-white/10 bg-wine/60 shadow-lg shadow-black/20 backdrop-blur-md",
           )}
         >
           <Logo src={logoUrl} variant={isLight ? "dark" : "light"} />
@@ -50,7 +50,7 @@ export function Navbar({ logoUrl }: NavbarProps) {
               aria-hidden
               className={cn(
                 "pointer-events-none absolute rounded-full transition-all duration-300 ease-out",
-                isLight ? "bg-brand-dark/10" : "bg-white/10",
+                isLight ? "bg-wine/10" : "bg-white/10",
                 rect ? "opacity-100" : "opacity-0",
               )}
               style={
@@ -73,7 +73,7 @@ export function Navbar({ logoUrl }: NavbarProps) {
                 className={cn(
                   "relative z-10 rounded-full px-4 py-2 text-sm font-medium transition-colors",
                   isLight
-                    ? "text-brand-dark/80 hover:text-brand-dark"
+                    ? "text-wine/80 hover:text-wine"
                     : "text-white/90 hover:text-white",
                 )}
               >
@@ -87,8 +87,8 @@ export function Navbar({ logoUrl }: NavbarProps) {
               className={cn(
                 "relative z-10 ml-2 rounded-full px-6 py-2.5 text-sm font-semibold transition-colors",
                 isLight
-                  ? "bg-brand-dark text-white hover:bg-brand-dark/90"
-                  : "bg-white text-brand-dark hover:bg-white/90",
+                  ? "bg-wine text-cream hover:bg-wine/90"
+                  : "bg-white/25 text-white hover:bg-white/35",
               )}
             >
               {CONTACT_LINK.label}
@@ -104,8 +104,8 @@ export function Navbar({ logoUrl }: NavbarProps) {
             className={cn(
               "rounded-full px-5 py-2 text-sm font-semibold transition-colors md:hidden",
               isLight
-                ? "bg-brand-dark text-white hover:bg-brand-dark/90"
-                : "bg-white text-brand-dark hover:bg-white/90",
+                ? "bg-wine text-cream hover:bg-wine/90"
+                : "bg-white/25 text-white hover:bg-white/35",
             )}
           >
             {menu.isOpen ? "Zavřít" : "Menu"}

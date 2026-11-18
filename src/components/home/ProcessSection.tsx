@@ -15,7 +15,7 @@ export function ProcessSection({ content, steps }: ProcessSectionProps) {
     <Section
       id="proces"
       maxWidth="max-w-[88rem]"
-      className="bg-[url('/homepage/background2.jpg')] bg-cover bg-center bg-no-repeat"
+      className="bg-wine-fade rounded-[2rem] md:rounded-[40px]"
     >
       <SectionHeading
         inverted
@@ -27,7 +27,7 @@ export function ProcessSection({ content, steps }: ProcessSectionProps) {
         {/* Timeline spine: left on mobile, centered on desktop. */}
         <span
           aria-hidden="true"
-          className="absolute inset-y-0 left-0 w-px bg-white/25 md:left-1/2 md:-translate-x-1/2"
+          className="absolute inset-y-0 left-0 w-px bg-blush/60 md:left-1/2 md:-translate-x-1/2"
         />
         <ol className="flex flex-col gap-12">
           {steps.map((step, i) => (

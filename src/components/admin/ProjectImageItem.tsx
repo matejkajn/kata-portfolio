@@ -37,7 +37,7 @@ export function ProjectImageItem({ image, index, total, folder, isThumbnail }: P
         <div className="flex items-center gap-2 text-sm font-semibold text-ink">
           <span>Obrázek {index + 1}</span>
           {index === 0 && (
-            <span className="rounded-full bg-brand/10 px-2 py-0.5 text-xs font-medium text-brand">
+            <span className="rounded-full bg-navy/10 px-2 py-0.5 text-xs font-medium text-navy">
               Hlavní obrázek
             </span>
           )}

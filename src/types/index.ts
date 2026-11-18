@@ -80,6 +80,8 @@ export interface NavLink {
  * renders in the accent colour and a newline forces a line break.
  */
 export interface SiteSettings {
+  /** Site colour palette (hex `#rrggbb`), exposed to CSS as `--color-*`. */
+  theme: ThemeColors;
   brand: {
     /** Site logo (local path or storage URL); empty falls back to the default. */
     logoUrl: string;
@@ -138,3 +140,25 @@ export interface SiteSettings {
 }
 
 export type SiteSettingsSection = keyof SiteSettings;
+
+/** The admin-editable colour palette. Every value is a `#rrggbb` hex string. */
+export interface ThemeColors {
+  /** Primary wine — hero, process, reference card headers, footer text. */
+  wine: string;
+  /** Lighter wine — contact section, bottom of the process gradient. */
+  wineLight: string;
+  /** Blue of the soft "stains" in the gradient backgrounds. */
+  stain: string;
+  /** Dark navy — headings and buttons on white. */
+  navy: string;
+  /** Highlighted heading words and rating stars. */
+  accent: string;
+  /** Cream — card bodies, button text, headings on dark. */
+  cream: string;
+  /** Soft pink — process pills, names on reference cards. */
+  blush: string;
+  /** Body text on white. */
+  ink: string;
+  /** Secondary text (copyright, hints). */
+  muted: string;
+}

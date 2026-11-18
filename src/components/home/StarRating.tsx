@@ -25,7 +25,7 @@ export function StarRating({ rating, className }: StarRatingProps) {
       role="img"
       aria-label={`Hodnocení ${rating} z ${MAX_RATING}`}
       className={cn(
-        "flex items-center gap-1.5 rounded-md bg-[linear-gradient(180deg,#3a33c9_0%,#7d78dc_100%)] px-5 py-2.5 shadow-[0_8px_20px_-8px_rgba(28,22,104,0.6)] ring-1 ring-white/20",
+        "flex items-center gap-1.5 rounded-md bg-linear-to-b from-wine/70 to-wine/35 px-5 py-2.5 shadow-lg shadow-wine/30 ring-1 ring-white/30 backdrop-blur-md",
         className,
       )}
     >

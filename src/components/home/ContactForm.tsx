@@ -16,7 +16,7 @@ const FIELDS: Array<{
 ];
 
 const inputClass =
-  "w-full border-0 border-b border-white/30 bg-transparent px-0 py-2 text-base text-white placeholder:text-white/55 focus:border-accent focus:outline-none focus:ring-0";
+  "w-full border-0 border-b border-white/50 bg-transparent px-0 py-2 text-base text-white placeholder:text-white/60 focus:border-accent focus:outline-none focus:ring-0";
 
 interface ContactFormProps {
   /** Thank-you note shown after a successful submit. */
@@ -28,7 +28,7 @@ export function ContactForm({ successMessage }: ContactFormProps) {
   const { values, status, setField, handleSubmit } = useContactForm();
 
   return (
-    <form onSubmit={handleSubmit} className="flex flex-col gap-7">
+    <form onSubmit={handleSubmit} className="flex max-w-xl flex-col gap-7">
       {FIELDS.map((field) => (
         <input
           key={field.name}
@@ -55,14 +55,14 @@ export function ContactForm({ successMessage }: ContactFormProps) {
       <div className="mt-2 flex items-center gap-4">
         <Button
           type="submit"
-          variant="accent"
+          variant="glass"
           disabled={status === "submitting"}
-          className="px-10 py-3 text-base font-semibold disabled:opacity-60"
+          className="px-12 py-3 text-xl disabled:opacity-60"
         >
           {status === "submitting" ? "Odesílám…" : "Odeslat"}
         </Button>
         {status === "success" && (
-          <span className="text-sm text-white/80" role="status">
+          <span className="text-sm text-white" role="status">
             {successMessage}
           </span>
         )}

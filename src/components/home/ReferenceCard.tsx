@@ -9,17 +9,17 @@ interface ReferenceCardProps {
 /** A client testimonial: dark header with portrait and attribution, rating badge, quote. */
 export function ReferenceCard({ reference }: ReferenceCardProps) {
   return (
-    <article className="flex h-full flex-col rounded-xl bg-brand-tint shadow-[0_20px_40px_-24px_rgba(28,22,104,0.45)]">
-      <header className="relative rounded-xl bg-brand-dark px-6 pb-14 pt-6 text-white">
+    <article className="flex h-full flex-col rounded-xl bg-cream shadow-[0_24px_48px_-28px_color-mix(in_oklab,var(--color-wine)_55%,transparent)]">
+      <header className="relative rounded-xl bg-wine px-5 pb-16 pt-5 text-blush">
         <div className="flex items-start gap-5 sm:gap-6">
           <ReferenceAvatar name={reference.author} photoUrl={reference.photoUrl} />
           <div className="min-w-0 pt-5">
-            <h3 className="text-lg font-semibold sm:text-xl">{reference.author}</h3>
+            <h3 className="text-lg font-semibold text-blush sm:text-xl">{reference.author}</h3>
             {reference.role && (
-              <p className="mt-2 text-sm leading-snug text-white/80">{reference.role}</p>
+              <p className="mt-2 text-sm leading-snug text-blush/85">{reference.role}</p>
             )}
             {reference.company && (
-              <p className="text-sm leading-snug text-white/80">{reference.company}</p>
+              <p className="text-sm leading-snug text-blush/85">{reference.company}</p>
             )}
           </div>
         </div>
@@ -29,7 +29,7 @@ export function ReferenceCard({ reference }: ReferenceCardProps) {
         />
       </header>
 
-      <blockquote className="flex-1 px-6 pb-12 pt-14 text-center text-base leading-relaxed text-ink/85 sm:px-8">
+      <blockquote className="flex-1 px-6 pb-12 pt-14 text-center text-base leading-relaxed text-ink sm:px-8">
         {reference.quote}
       </blockquote>
     </article>

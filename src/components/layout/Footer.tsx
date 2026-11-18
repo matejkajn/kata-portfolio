@@ -23,7 +23,7 @@ export function Footer({ content, logoUrl }: FooterProps) {
           <div className="flex flex-col gap-4">
             <a
               href={`mailto:${content.email}`}
-              className="text-lg font-semibold text-ink hover:text-brand"
+              className="text-lg font-semibold text-wine hover:text-navy"
             >
               {content.email}
             </a>
@@ -32,7 +32,7 @@ export function Footer({ content, logoUrl }: FooterProps) {
               href={content.instagramUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-3 text-sm text-muted hover:text-brand"
+              className="inline-flex items-center gap-3 text-sm text-wine hover:text-navy"
             >
               <Image
                 src="/footer/logo_instagram.png"
@@ -48,7 +48,7 @@ export function Footer({ content, logoUrl }: FooterProps) {
               href={content.linkedinUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-3 text-sm text-muted hover:text-brand"
+              className="inline-flex items-center gap-3 text-sm text-wine hover:text-navy"
             >
               <Image
                 src="/footer/logo_linkedin.png"

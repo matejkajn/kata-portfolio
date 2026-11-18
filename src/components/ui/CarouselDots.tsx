@@ -25,7 +25,7 @@ export function CarouselDots({ count, activeIndex, onSelect, className }: Carous
           <span
             className={cn(
               "block h-1 w-14 rounded-full transition-colors",
-              index === activeIndex ? "bg-brand-dark" : "bg-brand/20 group-hover:bg-brand/40",
+              index === activeIndex ? "bg-wine" : "bg-wine/30 group-hover:bg-wine/50",
             )}
           />
         </button>

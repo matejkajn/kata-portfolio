@@ -5,6 +5,7 @@ import { useState } from "react";
 import { ImageField } from "./ImageField";
 import { TextArea } from "./TextArea";
 import { TextInput } from "./TextInput";
+import { MAX_RATING } from "@/lib/rating";
 import type { TestimonialRow } from "@/types/database";
 
 interface TestimonialFieldsProps {
@@ -13,48 +14,39 @@ interface TestimonialFieldsProps {
 
 /** Fields of a reference. Keyed by the parent so "add new" can reset it. */
 export function TestimonialFields({ testimonial }: TestimonialFieldsProps) {
-  const [logoUrl, setLogoUrl] = useState(testimonial?.logo_url ?? "");
-  const [logoWidth, setLogoWidth] = useState(String(testimonial?.logo_width ?? ""));
-  const [logoHeight, setLogoHeight] = useState(String(testimonial?.logo_height ?? ""));
+  const [photoUrl, setPhotoUrl] = useState(testimonial?.photo_url ?? "");
 
   return (
     <div className="flex flex-col gap-5">
       <div className="grid gap-5 sm:grid-cols-2">
         <TextInput label="Jméno" name="author" required defaultValue={testimonial?.author} />
-        <TextInput label="Pozice / firma" name="role" defaultValue={testimonial?.role} />
+        <TextInput
+          label="Hodnocení (počet hvězd)"
+          name="rating"
+          type="number"
+          min={1}
+          max={MAX_RATING}
+          defaultValue={testimonial?.rating ?? MAX_RATING}
+        />
+      </div>
+      <div className="grid gap-5 sm:grid-cols-2">
+        <TextInput
+          label="Pozice"
+          name="role"
+          placeholder="např. CEO"
+          defaultValue={testimonial?.role}
+        />
+        <TextInput label="Firma" name="company" defaultValue={testimonial?.company} />
       </div>
       <TextArea label="Citace" name="quote" rows={4} defaultValue={testimonial?.quote} />
       <ImageField
-        label="Logo"
-        name="logo_url"
+        label="Fotka"
+        name="photo_url"
         folder="references"
-        value={logoUrl}
-        onChange={setLogoUrl}
-        onUploaded={(image) => {
-          if (!image.width || !image.height) return;
-          setLogoWidth(String(image.width));
-          setLogoHeight(String(image.height));
-        }}
+        value={photoUrl}
+        onChange={setPhotoUrl}
+        hint="Čtvercový portrét, ideálně alespoň 300 × 300 px. Bez fotky se zobrazí iniciály."
       />
-      <div className="grid gap-5 sm:grid-cols-2">
-        <TextInput
-          label="Šířka loga (px)"
-          name="logo_width"
-          type="number"
-          min={0}
-          value={logoWidth}
-          onChange={(event) => setLogoWidth(event.target.value)}
-          hint="Vyplní se automaticky po nahrání."
-        />
-        <TextInput
-          label="Výška loga (px)"
-          name="logo_height"
-          type="number"
-          min={0}
-          value={logoHeight}
-          onChange={(event) => setLogoHeight(event.target.value)}
-        />
-      </div>
     </div>
   );
 }

@@ -6,6 +6,7 @@
   --color-brand-dark: #1c1668; /* deep hero / process base */
   --color-brand-bright: #3a33c9; /* vivid CTA section */
   --color-accent: #f5c518; /* highlight yellow */
+  --color-brand-tint: #f3f2fb; /* light indigo surface — reference card body */
 
   --color-ink: #171728; /* headings / near-black */
   --color-muted: #6b6b7b; /* secondary body text */
@@ -36,4 +37,12 @@ body {
       transparent 70%
     ),
     linear-gradient(180deg, #241d8a 0%, #1c1668 100%);
+}
+
+/* Hide the scrollbar of horizontally scrolling carousels (still swipeable). */
+@utility scrollbar-none {
+  scrollbar-width: none;
+  &::-webkit-scrollbar {
+    display: none;
+  }
 }

@@ -56,14 +56,14 @@ export interface Reference {
   quote: string;
   /** Client name. */
   author: string;
-  /** Client role / company, e.g. "Majitel společnosti". */
+  /** Job title, e.g. "CEO". */
   role: string;
-  /** Optional logo image URL. */
-  logoUrl?: string;
-  /** Intrinsic logo width in px (for next/image aspect ratio). */
-  logoWidth?: number;
-  /** Intrinsic logo height in px (for next/image aspect ratio). */
-  logoHeight?: number;
+  /** Client company, e.g. "Vidix". */
+  company: string;
+  /** Portrait photo URL; initials render when absent. */
+  photoUrl?: string;
+  /** Star rating, 1–5. */
+  rating: number;
 }
 
 /** A primary navigation entry. */

@@ -10,6 +10,7 @@ import {
 import { failure, success, throwIfError, type ActionResult } from "../result";
 import { revalidateSite } from "../revalidate";
 import { moveRow, nextSortOrder, type MoveDirection } from "../rows";
+import { clampRating } from "@/lib/rating";
 
 /** Create (no `id`) or update a client reference from its form. */
 export async function saveTestimonial(formData: FormData): Promise<ActionResult> {
@@ -19,10 +20,10 @@ export async function saveTestimonial(formData: FormData): Promise<ActionResult>
     const fields = {
       author: readRequired(formData, "author", "Jméno"),
       role: readString(formData, "role"),
+      company: readString(formData, "company"),
       quote: readString(formData, "quote"),
-      logo_url: readOptionalString(formData, "logo_url"),
-      logo_width: readOptionalInt(formData, "logo_width"),
-      logo_height: readOptionalInt(formData, "logo_height"),
+      photo_url: readOptionalString(formData, "photo_url"),
+      rating: clampRating(readOptionalInt(formData, "rating")),
     };
 
     const { error } = id

@@ -26,6 +26,9 @@ and the storage upload policies for the `project-images` bucket.
 3. Then run `supabase/migrations/0003_logo.sql` the same way. It seeds the current
    monogram as the editable site logo (`site_settings.content.brand.logoUrl`) and never
    overwrites a logo that was already uploaded.
+4. Then run `supabase/migrations/0004_testimonial_cards.sql`. It adds the photo, company
+   and star rating used by the reference cards (the old logo columns are kept but unused)
+   and fills in the companies of the three original references.
 
 To change the admins later:
 

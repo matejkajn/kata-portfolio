@@ -4,6 +4,7 @@ import { supabase } from "./client";
 import { PROCESS_STEPS } from "@/lib/content/process";
 import { REFERENCES } from "@/lib/content/references";
 import { normalizeSiteSettings } from "@/lib/content/siteSettings";
+import { clampRating } from "@/lib/rating";
 import type { ProcessStepRow, TestimonialRow } from "@/types/database";
 import type { ProcessStep, Reference, SiteSettings } from "@/types";
 
@@ -30,9 +31,9 @@ export function toReference(row: TestimonialRow): Reference {
     quote: row.quote,
     author: row.author,
     role: row.role,
-    logoUrl: row.logo_url ?? undefined,
-    logoWidth: row.logo_width ?? undefined,
-    logoHeight: row.logo_height ?? undefined,
+    company: row.company ?? "",
+    photoUrl: row.photo_url ?? undefined,
+    rating: clampRating(row.rating),
   };
 }
 

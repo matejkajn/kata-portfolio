@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import { CloseIcon } from "@/components/ui/CloseIcon";
 import { Logo } from "@/components/ui/Logo";
 import { cn } from "@/lib/cn";
 import { CONTACT_LINK, NAV_LINKS } from "@/lib/content/navigation";
@@ -101,14 +102,16 @@ export function Navbar({ logoUrl }: NavbarProps) {
             onClick={menu.toggle}
             aria-expanded={menu.isOpen}
             aria-controls="mobile-menu"
+            aria-label={menu.isOpen ? "Zavřít menu" : "Otevřít menu"}
             className={cn(
-              "rounded-full px-5 py-2 text-sm font-semibold transition-colors md:hidden",
+              "flex h-9 items-center justify-center rounded-full text-sm font-semibold transition-colors md:hidden",
+              menu.isOpen ? "w-9" : "px-5",
               isLight
                 ? "bg-wine text-cream hover:bg-wine/90"
                 : "bg-white/25 text-white hover:bg-white/35",
             )}
           >
-            {menu.isOpen ? "Zavřít" : "Menu"}
+            {menu.isOpen ? <CloseIcon /> : "Menu"}
           </button>
         </div>
       </div>

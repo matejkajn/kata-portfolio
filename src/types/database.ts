@@ -59,6 +59,11 @@ export type TestimonialRow = {
   logo_url: string | null;
   logo_width: number | null;
   logo_height: number | null;
+  /** Portrait photo shown on the reference card. */
+  photo_url: string | null;
+  company: string;
+  /** Star rating, 1–5. */
+  rating: number;
   sort_order: number;
 };
 
@@ -104,7 +109,10 @@ export interface Database {
       >;
       site_settings: TableDef<SiteSettingsRow, "id" | "updated_at">;
       process_steps: TableDef<ProcessStepRow, "id">;
-      testimonials: TableDef<TestimonialRow, "id">;
+      testimonials: TableDef<
+        TestimonialRow,
+        "id" | "logo_url" | "logo_width" | "logo_height" | "photo_url" | "company" | "rating"
+      >;
     };
     Views: Record<string, never>;
     Functions: {

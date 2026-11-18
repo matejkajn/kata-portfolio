@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import { CloseIcon } from "@/components/ui/CloseIcon";
 import { Logo } from "@/components/ui/Logo";
 import { cn } from "@/lib/cn";
 import { CONTACT_LINK, NAV_LINKS } from "@/lib/content/navigation";
@@ -14,7 +15,12 @@ import { MobileMenu } from "./MobileMenu";
  * transparent with white text over dark sections, a white card with dark
  * text over light ones. Collapses to a "Menu" overlay on mobile.
  */
-export function Navbar() {
+interface NavbarProps {
+  /** Logo URL from site settings. */
+  logoUrl?: string;
+}
+
+export function Navbar({ logoUrl }: NavbarProps) {
   const menu = useDisclosure();
   const { containerRef, registerItem, setActiveHref, rect } = useNavIndicator();
   const detectedTheme = useNavTheme();
@@ -29,11 +35,11 @@ export function Navbar() {
           className={cn(
             "flex items-center justify-between rounded-full border py-2 pl-6 pr-2 transition-all duration-300",
             isLight
-              ? "border-transparent bg-white shadow-lg shadow-brand-dark/10"
-              : "border-white/15 bg-white/5 backdrop-blur-md",
+              ? "border-transparent bg-white shadow-lg shadow-wine/10"
+              : "border-white/10 bg-wine/60 shadow-lg shadow-black/20 backdrop-blur-md",
           )}
         >
-          <Logo variant={isLight ? "dark" : "light"} />
+          <Logo src={logoUrl} variant={isLight ? "dark" : "light"} />
 
           {/* Desktop navigation */}
           <nav
@@ -45,7 +51,7 @@ export function Navbar() {
               aria-hidden
               className={cn(
                 "pointer-events-none absolute rounded-full transition-all duration-300 ease-out",
-                isLight ? "bg-brand-dark/10" : "bg-white/10",
+                isLight ? "bg-wine/10" : "bg-white/10",
                 rect ? "opacity-100" : "opacity-0",
               )}
               style={
@@ -68,7 +74,7 @@ export function Navbar() {
                 className={cn(
                   "relative z-10 rounded-full px-4 py-2 text-sm font-medium transition-colors",
                   isLight
-                    ? "text-brand-dark/80 hover:text-brand-dark"
+                    ? "text-wine/80 hover:text-wine"
                     : "text-white/90 hover:text-white",
                 )}
               >
@@ -82,8 +88,8 @@ export function Navbar() {
               className={cn(
                 "relative z-10 ml-2 rounded-full px-6 py-2.5 text-sm font-semibold transition-colors",
                 isLight
-                  ? "bg-brand-dark text-white hover:bg-brand-dark/90"
-                  : "bg-white text-brand-dark hover:bg-white/90",
+                  ? "bg-wine text-cream hover:bg-wine/90"
+                  : "bg-white/25 text-white hover:bg-white/35",
               )}
             >
               {CONTACT_LINK.label}
@@ -96,14 +102,16 @@ export function Navbar() {
             onClick={menu.toggle}
             aria-expanded={menu.isOpen}
             aria-controls="mobile-menu"
+            aria-label={menu.isOpen ? "Zavřít menu" : "Otevřít menu"}
             className={cn(
-              "rounded-full px-5 py-2 text-sm font-semibold transition-colors md:hidden",
+              "flex h-9 items-center justify-center rounded-full text-sm font-semibold transition-colors md:hidden",
+              menu.isOpen ? "w-9" : "px-5",
               isLight
-                ? "bg-brand-dark text-white hover:bg-brand-dark/90"
-                : "bg-white text-brand-dark hover:bg-white/90",
+                ? "bg-wine text-cream hover:bg-wine/90"
+                : "bg-white/25 text-white hover:bg-white/35",
             )}
           >
-            {menu.isOpen ? "Zavřít" : "Menu"}
+            {menu.isOpen ? <CloseIcon /> : "Menu"}
           </button>
         </div>
       </div>

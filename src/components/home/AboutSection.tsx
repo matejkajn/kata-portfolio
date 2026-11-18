@@ -13,16 +13,16 @@ export function AboutSection({ content }: AboutSectionProps) {
   return (
     <Section
       id="o-mne"
-      maxWidth="max-w-[88rem]"
+      maxWidth="max-w-[96rem]"
       innerClassName="grid items-center gap-12 md:grid-cols-2"
     >
       <div className="flex flex-col gap-5">
-        <span className="text-sm font-medium text-white/70">{content.label}</span>
-        <h2 className="text-3xl font-bold leading-snug tracking-tight text-white sm:text-4xl">
+        <span className="text-base text-white">{content.label}</span>
+        <h2 className="max-w-lg text-3xl font-normal leading-tight text-cream sm:text-5xl">
           {content.heading}
         </h2>
         {toParagraphs(content.text).map((paragraph, index) => (
-          <p key={index} className="text-base leading-relaxed text-white/75">
+          <p key={index} className="max-w-lg text-base leading-relaxed text-white/90">
             {paragraph}
           </p>
         ))}
@@ -31,9 +31,9 @@ export function AboutSection({ content }: AboutSectionProps) {
       <Image
         src={content.imageUrl}
         alt={content.imageAlt}
-        width={444}
+        width={560}
         height={582}
-        className="aspect-[4/5] w-full max-w-[444px] justify-self-center rounded-[40px] object-cover md:justify-self-end"
+        className="aspect-[56/58] w-full max-w-[560px] justify-self-center rounded-[40px] object-cover md:justify-self-end"
       />
     </Section>
   );

@@ -6,6 +6,7 @@ import { AdminSidebar } from "@/components/admin/AdminSidebar";
 import { PreviewBanner } from "@/components/admin/PreviewBanner";
 import { getAdminSession } from "@/lib/admin/auth";
 import { listProjects } from "@/lib/admin/queries";
+import { getSiteSettings } from "@/lib/supabase/content";
 
 /**
  * Authenticated admin shell: sidebar + content. The proxy already turned away
@@ -17,11 +18,11 @@ export default async function AdminPanelLayout({ children }: { children: ReactNo
   if (session.status === "anonymous") redirect("/admin/login");
   if (session.status === "forbidden") return <AccessDenied email={session.email} />;
 
-  const projects = await listProjects();
+  const [projects, settings] = await Promise.all([listProjects(), getSiteSettings()]);
 
   return (
     <div className="flex flex-1 flex-col md:flex-row">
-      <AdminSidebar projects={projects} email={session.email} />
+      <AdminSidebar projects={projects} email={session.email} logoUrl={settings.brand.logoUrl} />
       <main className="min-w-0 flex-1 px-5 py-8 sm:px-10 md:py-12">
         <div className="mx-auto w-full max-w-4xl">
           {session.preview && <PreviewBanner />}

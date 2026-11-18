@@ -25,7 +25,9 @@ export function PortfolioGrid({
 
       {moreHref && (
         <div className="mt-12 flex justify-center">
-          <ButtonLink href={moreHref}>{moreLabel}</ButtonLink>
+          <ButtonLink href={moreHref} className="px-14 py-3 text-xl">
+            {moreLabel}
+          </ButtonLink>
         </div>
       )}
     </>

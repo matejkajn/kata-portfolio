@@ -23,6 +23,13 @@ It is idempotent (safe to run again). It creates `admin_users`, `site_settings`,
 `process_steps`, `testimonials` (seeded with the current copy), the RLS write policies
 and the storage upload policies for the `project-images` bucket.
 
+3. Then run `supabase/migrations/0003_logo.sql` the same way. It seeds the current
+   monogram as the editable site logo (`site_settings.content.brand.logoUrl`) and never
+   overwrites a logo that was already uploaded.
+4. Then run `supabase/migrations/0004_testimonial_cards.sql`. It adds the photo, company
+   and star rating used by the reference cards (the old logo columns are kept but unused)
+   and fills in the companies of the three original references.
+
 To change the admins later:
 
 ```sql
@@ -84,6 +91,9 @@ accounts. You should land on **Nastavení webu**. A different account ends on
 - Images are uploaded straight from the browser to the `project-images` bucket
   (`site/…`, `references/…`, `projects/<slug>/…`). Removing an image from a project
   only removes the database row; the file stays in storage.
+- The site logo is edited in **Nastavení webu → Logo**. It is used in the navigation
+  (turned white over dark sections), the footer and the admin sidebar. Removing it falls
+  back to the built-in monogram `/homepage/logo.png`. SVGs are served unoptimised.
 - If the new tables don't exist yet, the site falls back to the defaults in
   `src/lib/content/`, so it keeps working before the migration is run.
 

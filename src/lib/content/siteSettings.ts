@@ -1,3 +1,4 @@
+import { isHexColor } from "@/lib/theme";
 import type { SiteSettings, SiteSettingsSection } from "@/types";
 
 /**
@@ -6,19 +7,33 @@ import type { SiteSettings, SiteSettingsSection } from "@/types";
  * administration is used to fill the database.
  */
 export const DEFAULT_SITE_SETTINGS: SiteSettings = {
+  theme: {
+    wine: "#300713",
+    wineLight: "#59162a",
+    stain: "#21438d",
+    navy: "#0b1d45",
+    accent: "#f2f0c7",
+    cream: "#f2efe7",
+    blush: "#eed2da",
+    ink: "#131935",
+    muted: "#836a71",
+  },
+  brand: {
+    logoUrl: "/homepage/logo.png",
+  },
   seo: {
     title: "Kateřina Hršelová — Grafická designérka",
     description:
       "Vytvářím vizuální identity, které zaujmou a vyprávějí příběh vaší firmy. Kreativní design, který promlouvá.",
   },
   hero: {
-    title: "Kreativní design,\nkterý *promlouvá*",
+    title: "Kreativní design\npro *vaši značku*",
     text: "Vytvářím vizuální identity, které zaujmou a vyprávějí příběh vaší firmy. Každý projekt je pro mě jedinečnou příležitostí ke kreativnímu vyjádření.",
     buttonLabel: "Portfolio",
   },
   about: {
     label: "O mně",
-    heading: "Ahoj, jsem grafická designérka na volné noze z Hradce Králové",
+    heading: "Ahoj, jsem grafická designérka z Hradce Králové",
     text: "Jmenuji se Kateřina a jsem grafická designérka zaměřující se na vizuální identitu, branding a grafické materiály pro tisk i online prostředí. Už od roku 2020 se věnuji práci s klienty od návrhu log, vizitek a plakátů až po rozsáhlejší katalogy a firemní prezentace. Nejvíc mě naplňuje, když můžu vytvořit kompletní vizuální koncept od prvního nápadu až po finální realizaci.\n\nMoje práce kombinuje kreativitu s důrazem na detail a funkčnost. Věřím, že kvalitní design musí být nejen esteticky zajímavý, ale především srozumitelný a použitelný. Díky zkušenostem z praxe i studia v Portugalsku mám širší pohled na vizuální tvorbu – od tradičních technik až po moderní digitální nástroje.",
     imageUrl: "/homepage/profile.png",
     imageAlt: "Portrét Kateřiny",
@@ -80,6 +95,8 @@ export function normalizeSiteSettings(input: unknown): SiteSettings {
     const target = result[section] as Record<string, string | number>;
     for (const key of Object.keys(target)) {
       const value = incoming[key];
+      // Colours end up in CSS, so only well-formed hex values are accepted.
+      if (section === "theme" && !isHexColor(value)) continue;
       if (typeof value === typeof target[key]) {
         target[key] = value as string | number;
       }

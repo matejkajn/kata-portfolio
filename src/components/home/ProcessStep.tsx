@@ -33,12 +33,12 @@ export function ProcessStep({ step, side }: ProcessStepProps) {
     >
       <div
         className={cn(
-          "flex flex-col items-center gap-3 text-center",
+          "flex flex-col items-center gap-6 text-center",
           isLeft ? "md:col-start-1 md:pr-12" : "md:col-start-2 md:pl-12",
         )}
       >
-        <Pill>{step.label}</Pill>
-        <p className="max-w-sm text-sm leading-relaxed text-white/70">
+        <Pill className="w-full max-w-[22rem]">{step.label}</Pill>
+        <p className="max-w-sm text-sm leading-relaxed text-cream sm:text-base">
           {step.description}
         </p>
       </div>

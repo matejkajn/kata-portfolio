@@ -29,8 +29,8 @@ export function SectionHeading({
     >
       <h2
         className={cn(
-          "text-3xl font-bold tracking-tight sm:text-4xl",
-          inverted ? "text-white" : "text-ink",
+          "text-3xl font-medium leading-tight sm:text-5xl",
+          inverted ? "text-cream" : "text-navy",
         )}
       >
         {title}
@@ -39,7 +39,7 @@ export function SectionHeading({
         <p
           className={cn(
             "max-w-xl text-base leading-relaxed",
-            inverted ? "text-white/70" : "text-muted",
+            inverted ? "text-cream/90" : "text-ink",
           )}
         >
           {subtitle}

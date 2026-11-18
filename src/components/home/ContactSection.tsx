@@ -14,15 +14,16 @@ export function ContactSection({ content }: ContactSectionProps) {
   return (
     <Section
       id="kontakt"
-      maxWidth="max-w-[88rem]"
-      innerClassName="grid items-center gap-12 overflow-hidden rounded-[2.5rem] bg-[url('/homepage/background3.png')] bg-cover bg-center bg-no-repeat px-8 py-14 md:grid-cols-2 md:px-16 md:py-20"
+      maxWidth="max-w-[96rem]"
+      className="bg-wine-glow rounded-t-[2rem] md:rounded-t-[40px]"
+      innerClassName="grid items-center gap-12 md:grid-cols-2"
     >
       <div className="flex flex-col gap-6">
         <div className="flex flex-col gap-3">
-          <h2 className="text-3xl font-bold tracking-tight text-white sm:text-4xl">
+          <h2 className="text-3xl font-normal leading-tight text-cream sm:text-5xl">
             <HighlightedText text={content.heading} />
           </h2>
-          <p className="max-w-md text-base leading-relaxed text-white/75">
+          <p className="max-w-md text-base leading-relaxed text-white">
             {content.text}
           </p>
         </div>
@@ -34,7 +35,7 @@ export function ContactSection({ content }: ContactSectionProps) {
         alt={content.imageAlt}
         width={420}
         height={466}
-        className="aspect-[4/5] w-full rounded-2xl object-cover"
+        className="aspect-[4/5] w-full max-w-[420px] justify-self-center rounded-2xl object-cover md:justify-self-end"
       />
     </Section>
   );

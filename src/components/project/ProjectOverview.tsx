@@ -18,7 +18,7 @@ export function ProjectOverview({ tags, description }: ProjectOverviewProps) {
     <div className="grid gap-6 md:grid-cols-[2fr_3fr] md:gap-12">
       <div className="flex flex-col gap-1">
         <p className="text-sm text-muted">{tags}</p>
-        <h2 className="text-2xl font-bold tracking-tight text-ink">O Projektu</h2>
+        <h2 className="text-2xl font-medium text-navy">O Projektu</h2>
       </div>
 
       <div className="flex flex-col gap-4">

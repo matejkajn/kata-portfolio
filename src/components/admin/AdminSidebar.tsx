@@ -1,14 +1,16 @@
-import Image from "next/image";
 import Link from "next/link";
 
 import { SidebarGroup } from "./SidebarGroup";
 import { SidebarLink } from "./SidebarLink";
 import { SignOutButton } from "./SignOutButton";
+import { LogoImage } from "@/components/ui/LogoImage";
 import type { ProjectSummary } from "@/lib/admin/queries";
 
 interface AdminSidebarProps {
   projects: ProjectSummary[];
   email: string;
+  /** Logo URL from site settings. */
+  logoUrl: string;
 }
 
 const SITE_LINKS = [
@@ -18,18 +20,12 @@ const SITE_LINKS = [
 ];
 
 /** Left-hand navigation: site-wide content, then every project. */
-export function AdminSidebar({ projects, email }: AdminSidebarProps) {
+export function AdminSidebar({ projects, email, logoUrl }: AdminSidebarProps) {
   return (
-    <aside className="bg-brand-gradient flex w-full shrink-0 flex-col gap-8 px-4 py-6 text-white md:sticky md:top-0 md:h-screen md:w-72 md:overflow-y-auto">
+    <aside className="bg-wine-gradient flex w-full shrink-0 flex-col gap-8 px-4 py-6 text-white md:sticky md:top-0 md:h-screen md:w-72 md:overflow-y-auto">
       <div className="flex items-center justify-between px-3">
         <Link href="/admin" className="flex items-center gap-3">
-          <Image
-            src="/homepage/logo.png"
-            alt=""
-            width={120}
-            height={76}
-            className="h-7 w-auto brightness-0 invert"
-          />
+          <LogoImage src={logoUrl} variant="light" className="h-7 w-auto max-w-24" />
           <span className="text-sm font-semibold">Administrace</span>
         </Link>
         <Link

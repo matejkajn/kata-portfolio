@@ -1,4 +1,3 @@
-import Image from "next/image";
 import { Section } from "@/components/layout/Section";
 import { ButtonLink } from "@/components/ui/Button";
 import { HighlightedText } from "@/components/ui/HighlightedText";
@@ -15,22 +14,13 @@ interface ProjectCtaProps {
 export function ProjectCta({ content }: ProjectCtaProps) {
   return (
     <Section>
-      <div className="relative isolate overflow-hidden rounded-3xl">
-        <Image
-          src="/footer/cta.png"
-          alt=""
-          fill
-          sizes="(min-width: 1280px) 1216px, 100vw"
-          className="-z-10 object-cover"
-        />
-        <div className="flex flex-col items-center gap-8 px-6 py-16 text-center sm:py-20">
-          <h2 className="max-w-2xl text-3xl font-bold tracking-tight text-white sm:text-4xl">
-            <HighlightedText text={content.heading} />
-          </h2>
-          <ButtonLink href="/#kontakt" variant="accent">
-            {content.buttonLabel}
-          </ButtonLink>
-        </div>
+      <div className="bg-wine-glow flex flex-col items-center gap-8 rounded-3xl px-6 py-16 text-center sm:py-20">
+        <h2 className="max-w-2xl text-3xl font-normal leading-tight text-cream sm:text-5xl">
+          <HighlightedText text={content.heading} />
+        </h2>
+        <ButtonLink href="/#kontakt" variant="glass">
+          {content.buttonLabel}
+        </ButtonLink>
       </div>
     </Section>
   );

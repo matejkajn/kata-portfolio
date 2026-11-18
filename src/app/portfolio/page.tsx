@@ -25,9 +25,9 @@ export default async function PortfolioPage() {
 
   return (
     <>
-      <Navbar />
+      <Navbar logoUrl={settings.brand.logoUrl} />
       <main className="flex-1" data-nav-theme="light">
-        <div className="mx-auto w-full max-w-6xl px-6 pt-28 pb-20 sm:px-8 md:pt-36 md:pb-28">
+        <div className="mx-auto w-full max-w-7xl px-4 pt-28 pb-20 sm:px-6 md:pt-36 md:pb-28">
           <SectionHeading
             title={settings.portfolio.heading}
             subtitle={settings.portfolio.subtitle}
@@ -39,7 +39,7 @@ export default async function PortfolioPage() {
         <ProjectCta content={settings.cta} />
       </main>
       <div data-nav-theme="light">
-        <Footer content={settings.footer} />
+        <Footer content={settings.footer} logoUrl={settings.brand.logoUrl} />
       </div>
     </>
   );

@@ -4,20 +4,26 @@ import type { SiteSettings } from "@/types";
 
 interface FooterProps {
   content: SiteSettings["footer"];
+  /** Logo URL from site settings. */
+  logoUrl?: string;
 }
 
 /** Site footer: monogram, contact details and social links. */
-export function Footer({ content }: FooterProps) {
+export function Footer({ content, logoUrl }: FooterProps) {
   return (
-    <footer className="bg-white px-6 py-12 sm:px-8">
-      <div className="mx-auto flex w-full max-w-6xl flex-col gap-12">
+    <footer className="bg-white px-4 py-12 sm:px-6">
+      <div className="mx-auto flex w-full max-w-7xl flex-col gap-12">
         <div className="flex flex-col gap-8 sm:flex-row sm:items-center sm:gap-16">
-          <Logo imageClassName="h-[76px] w-[120px]" className="shrink-0" />
+          <Logo
+            src={logoUrl}
+            imageClassName="h-[76px] w-auto max-w-[200px]"
+            className="shrink-0"
+          />
 
           <div className="flex flex-col gap-4">
             <a
               href={`mailto:${content.email}`}
-              className="text-lg font-semibold text-ink hover:text-brand"
+              className="text-lg font-semibold text-wine hover:text-navy"
             >
               {content.email}
             </a>
@@ -26,7 +32,7 @@ export function Footer({ content }: FooterProps) {
               href={content.instagramUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-3 text-sm text-muted hover:text-brand"
+              className="inline-flex items-center gap-3 text-sm text-wine hover:text-navy"
             >
               <Image
                 src="/footer/logo_instagram.png"
@@ -42,7 +48,7 @@ export function Footer({ content }: FooterProps) {
               href={content.linkedinUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-3 text-sm text-muted hover:text-brand"
+              className="inline-flex items-center gap-3 text-sm text-wine hover:text-navy"
             >
               <Image
                 src="/footer/logo_linkedin.png"

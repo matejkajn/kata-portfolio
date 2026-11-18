@@ -17,7 +17,7 @@ export function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
     <div
       id="mobile-menu"
       className={cn(
-        "fixed inset-0 z-40 bg-brand-gradient transition-opacity duration-200 md:hidden",
+        "fixed inset-0 z-40 bg-wine-gradient transition-opacity duration-200 md:hidden",
         isOpen
           ? "pointer-events-auto opacity-100"
           : "pointer-events-none opacity-0",

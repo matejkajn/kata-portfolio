@@ -9,7 +9,7 @@ interface PortfolioGridProps {
   moreLabel?: string;
 }
 
-/** Two-column grid of project previews, optionally followed by a link to the full listing. */
+/** Project previews — one per row on mobile, two columns from md up, optionally followed by a link to the full listing. */
 export function PortfolioGrid({
   projects,
   moreHref,
@@ -17,7 +17,7 @@ export function PortfolioGrid({
 }: PortfolioGridProps) {
   return (
     <>
-      <div className="mt-12 grid grid-cols-2 gap-6 md:gap-8">
+      <div className="mt-12 grid grid-cols-1 gap-6 md:grid-cols-2 md:gap-8">
         {projects.map((project) => (
           <ProjectCard key={project.slug} project={project} />
         ))}

@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
+import { DEFAULT_SITE_SETTINGS } from "@/lib/content/siteSettings";
 import { getSiteSettings } from "@/lib/supabase/content";
 import { themeStyle } from "@/lib/theme";
 import "./globals.css";
@@ -28,8 +29,13 @@ const montserrat = localFont({
 });
 
 export async function generateMetadata(): Promise<Metadata> {
-  const { seo } = await getSiteSettings();
-  return { title: seo.title, description: seo.description };
+  const { seo, brand } = await getSiteSettings();
+  const favicon = brand.faviconUrl.trim() || DEFAULT_SITE_SETTINGS.brand.faviconUrl;
+  return {
+    title: seo.title,
+    description: seo.description,
+    icons: { icon: favicon, apple: favicon },
+  };
 }
 
 export default async function RootLayout({

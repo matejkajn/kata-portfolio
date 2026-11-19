@@ -50,7 +50,7 @@ export default async function Home() {
         </div>
       </main>
       <div data-nav-theme="light">
-        <Footer content={settings.footer} logoUrl={settings.brand.logoUrl} />
+        <Footer content={settings.footer} brand={settings.brand} />
       </div>
     </>
   );

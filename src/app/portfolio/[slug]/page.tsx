@@ -73,7 +73,7 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
         <ProjectCta content={settings.cta} />
       </main>
       <div data-nav-theme="light">
-        <Footer content={settings.footer} logoUrl={settings.brand.logoUrl} />
+        <Footer content={settings.footer} brand={settings.brand} />
       </div>
     </>
   );

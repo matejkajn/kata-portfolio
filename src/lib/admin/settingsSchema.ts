@@ -99,7 +99,7 @@ export const SETTINGS_SCHEMA: SettingsSectionDef[] = [
     section: "brand",
     title: "Logo",
     description:
-      "Hlavní logo se zobrazuje v navigaci a v administraci. Patička může mít vlastní logo.",
+      "Hlavní logo se zobrazuje v navigaci a v administraci. Patička může mít vlastní logo. Favicon je ikona v záložce prohlížeče.",
     fields: [
       {
         key: "logoUrl",
@@ -112,6 +112,12 @@ export const SETTINGS_SCHEMA: SettingsSectionDef[] = [
         label: "Logo v patičce",
         kind: "image",
         hint: "Volitelné. Pokud není nahrané, použije se v patičce hlavní logo.",
+      },
+      {
+        key: "faviconUrl",
+        label: "Favicon (ikona v záložce prohlížeče)",
+        kind: "image",
+        hint: "Čtvercový obrázek, ideálně PNG 512 × 512 px (případně SVG nebo ICO). Prohlížeče ikonu ukládají do mezipaměti, změna se může projevit až po obnovení. Po odebrání se použije výchozí ikona.",
       },
     ],
   },

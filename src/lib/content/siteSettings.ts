@@ -21,6 +21,7 @@ export const DEFAULT_SITE_SETTINGS: SiteSettings = {
   brand: {
     logoUrl: "/homepage/logo.png",
     footerLogoUrl: "",
+    faviconUrl: "/icon.png",
   },
   seo: {
     title: "Kateřina Hršelová — Grafická designérka",

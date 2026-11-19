@@ -87,6 +87,8 @@ export interface SiteSettings {
     logoUrl: string;
     /** Footer logo; empty falls back to {@link logoUrl}. */
     footerLogoUrl: string;
+    /** Browser tab icon (local path or storage URL); empty falls back to the default. */
+    faviconUrl: string;
   };
   seo: {
     title: string;

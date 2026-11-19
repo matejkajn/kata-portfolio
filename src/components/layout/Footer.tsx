@@ -4,18 +4,18 @@ import type { SiteSettings } from "@/types";
 
 interface FooterProps {
   content: SiteSettings["footer"];
-  /** Logo URL from site settings. */
-  logoUrl?: string;
+  /** Brand settings; the footer logo falls back to the main logo. */
+  brand: SiteSettings["brand"];
 }
 
 /** Site footer: monogram, contact details and social links. */
-export function Footer({ content, logoUrl }: FooterProps) {
+export function Footer({ content, brand }: FooterProps) {
   return (
     <footer className="bg-white px-4 py-12 sm:px-6">
       <div className="mx-auto flex w-full max-w-7xl flex-col gap-12">
         <div className="flex flex-col gap-8 sm:flex-row sm:items-center sm:gap-16">
           <Logo
-            src={logoUrl}
+            src={brand.footerLogoUrl.trim() || brand.logoUrl}
             imageClassName="h-[76px] w-auto max-w-[200px]"
             className="shrink-0"
           />

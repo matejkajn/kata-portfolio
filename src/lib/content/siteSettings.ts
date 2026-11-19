@@ -20,6 +20,7 @@ export const DEFAULT_SITE_SETTINGS: SiteSettings = {
   },
   brand: {
     logoUrl: "/homepage/logo.png",
+    footerLogoUrl: "",
   },
   seo: {
     title: "Kateřina Hršelová — Grafická designérka",

@@ -98,13 +98,20 @@ export const SETTINGS_SCHEMA: SettingsSectionDef[] = [
   {
     section: "brand",
     title: "Logo",
-    description: "Zobrazuje se v navigaci, v patičce a v administraci.",
+    description:
+      "Hlavní logo se zobrazuje v navigaci a v administraci. Patička může mít vlastní logo.",
     fields: [
       {
         key: "logoUrl",
         label: "Logo",
         kind: "image",
         hint: "Ideálně PNG nebo SVG s průhledným pozadím. Na tmavém pozadí se logo automaticky zobrazí bíle. Po odebrání se použije výchozí logo.",
+      },
+      {
+        key: "footerLogoUrl",
+        label: "Logo v patičce",
+        kind: "image",
+        hint: "Volitelné. Pokud není nahrané, použije se v patičce hlavní logo.",
       },
     ],
   },

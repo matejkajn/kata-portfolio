@@ -30,7 +30,8 @@ export function Navbar({ logoUrl }: NavbarProps) {
 
   return (
     <header className="fixed inset-x-0 top-0 z-50 px-4 py-4 sm:px-6">
-      <div className="mx-auto w-full max-w-3xl">
+      {/* Sits above the mobile overlay (z-40) so the close toggle stays tappable. */}
+      <div className="relative z-50 mx-auto w-full max-w-3xl">
         <div
           className={cn(
             "flex items-center justify-between rounded-full border py-2 pl-6 pr-2 transition-all duration-300",

@@ -17,7 +17,7 @@ export function PortfolioGrid({
 }: PortfolioGridProps) {
   return (
     <>
-      <div className="mt-12 grid grid-cols-1 gap-6 md:grid-cols-2 md:gap-8">
+      <div className="mt-12 grid grid-cols-1 gap-[42px] md:grid-cols-2 md:gap-8">
         {projects.map((project) => (
           <ProjectCard key={project.slug} project={project} />
         ))}

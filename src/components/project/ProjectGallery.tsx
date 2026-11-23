@@ -10,7 +10,7 @@ export function ProjectGallery({ images }: ProjectGalleryProps) {
   if (images.length === 0) return null;
 
   return (
-    <div className="flex flex-col gap-12 md:gap-16">
+    <div className="flex flex-col gap-10">
       {images.map((image) => (
         <ProjectImageBlock key={image.url} image={image} />
       ))}

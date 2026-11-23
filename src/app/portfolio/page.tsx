@@ -7,6 +7,8 @@ import { PortfolioGrid } from "@/components/home/PortfolioGrid";
 import { ProjectCta } from "@/components/project/ProjectCta";
 import { getSiteSettings } from "@/lib/supabase/content";
 import { getProjects } from "@/lib/supabase/projects";
+import { GUTTERS } from "@/lib/layout";
+import { cn } from "@/lib/cn";
 
 export async function generateMetadata(): Promise<Metadata> {
   const { portfolio } = await getSiteSettings();
@@ -27,7 +29,7 @@ export default async function PortfolioPage() {
     <>
       <Navbar logoUrl={settings.brand.logoUrl} />
       <main className="flex-1" data-nav-theme="light">
-        <div className="mx-auto w-full max-w-7xl px-4 pt-28 pb-20 sm:px-6 md:pt-36 md:pb-28">
+        <div className={cn("w-full pt-28 md:pt-36", GUTTERS.home)}>
           <SectionHeading
             title={settings.portfolio.heading}
             subtitle={settings.portfolio.subtitle}
@@ -36,7 +38,7 @@ export default async function PortfolioPage() {
           <PortfolioGrid projects={projects} />
         </div>
 
-        <ProjectCta content={settings.cta} />
+        <ProjectCta content={settings.cta} gutter="home" tightBottom />
       </main>
       <div data-nav-theme="light">
         <Footer content={settings.footer} brand={settings.brand} />

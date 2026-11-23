@@ -12,7 +12,7 @@ export function ProjectCard({ project }: ProjectCardProps) {
   return (
     <Link href={`/portfolio/${project.slug}`} className="group flex flex-col gap-3">
       {project.imageUrl ? (
-        <div className="relative aspect-[4/3] w-full overflow-hidden rounded-[2rem] transition-transform duration-300 group-hover:-translate-y-1">
+        <div className="relative aspect-[4/3] w-full overflow-hidden rounded-[25px] transition-transform duration-300 group-hover:-translate-y-1">
           <Image
             src={project.imageUrl}
             alt={project.title}
@@ -26,7 +26,7 @@ export function ProjectCard({ project }: ProjectCardProps) {
         <ImagePlaceholder
           label={project.title}
           color={project.imageColor}
-          className="aspect-[4/3] w-full rounded-[2rem] transition-transform duration-300 group-hover:-translate-y-1"
+          className="aspect-[4/3] w-full rounded-[25px] transition-transform duration-300 group-hover:-translate-y-1"
         />
       )}
       <div>

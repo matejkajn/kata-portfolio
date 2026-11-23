@@ -10,8 +10,10 @@ interface StainProps {
 
 /**
  * One blurred blue ellipse of the gradient background, on its own full-size
- * SVG layer. The whole layer drifts sideways with a CSS transform, so the
- * browser blurs it once and then just moves the composited bitmap.
+ * layer. The drift animates a wrapping <div> rather than the <svg> itself:
+ * Safari doesn't reliably repaint a transformed SVG root that carries a
+ * filter, while an HTML layer is blurred once and then just moved as a
+ * composited bitmap in every browser.
  *
  * `slice` scales the artwork like `background-size: cover`; `overflow:
  * visible` lets the blur extend past the viewBox so no hard edge shows when
@@ -27,28 +29,32 @@ export function Stain({ stain, viewBox, blur }: StainProps) {
   } as CSSProperties;
 
   return (
-    <svg
-      viewBox={`0 0 ${viewBox.width} ${viewBox.height}`}
-      preserveAspectRatio="xMidYMid slice"
-      overflow="visible"
-      className="absolute inset-0 size-full animate-stain-drift will-change-transform motion-reduce:animate-none"
+    <div
+      className="absolute inset-0 animate-stain-drift will-change-transform motion-reduce:animate-none"
       style={style}
     >
-      <defs>
-        <filter
-          id={`${id}-blur`}
-          filterUnits="userSpaceOnUse"
-          colorInterpolationFilters="sRGB"
-          {...filterRegion}
-        >
-          <feGaussianBlur stdDeviation={blur} />
-        </filter>
-        <linearGradient id={`${id}-fill`} gradientUnits="userSpaceOnUse" {...gradient}>
-          <stop style={{ stopColor: "var(--color-stain)" }} />
-          <stop offset="1" style={{ stopColor: "var(--color-wine)" }} />
-        </linearGradient>
-      </defs>
-      <ellipse {...ellipse} fill={`url(#${id}-fill)`} filter={`url(#${id}-blur)`} />
-    </svg>
+      <svg
+        viewBox={`0 0 ${viewBox.width} ${viewBox.height}`}
+        preserveAspectRatio="xMidYMid slice"
+        overflow="visible"
+        className="absolute inset-0 size-full"
+      >
+        <defs>
+          <filter
+            id={`${id}-blur`}
+            filterUnits="userSpaceOnUse"
+            colorInterpolationFilters="sRGB"
+            {...filterRegion}
+          >
+            <feGaussianBlur stdDeviation={blur} />
+          </filter>
+          <linearGradient id={`${id}-fill`} gradientUnits="userSpaceOnUse" {...gradient}>
+            <stop style={{ stopColor: "var(--color-stain)" }} />
+            <stop offset="1" style={{ stopColor: "var(--color-wine)" }} />
+          </linearGradient>
+        </defs>
+        <ellipse {...ellipse} fill={`url(#${id}-fill)`} filter={`url(#${id}-blur)`} />
+      </svg>
+    </div>
   );
 }

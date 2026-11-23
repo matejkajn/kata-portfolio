@@ -1,13 +1,12 @@
 "use client";
 
-import Link from "next/link";
 import { CloseIcon } from "@/components/ui/CloseIcon";
 import { Logo } from "@/components/ui/Logo";
 import { cn } from "@/lib/cn";
-import { CONTACT_LINK, NAV_LINKS } from "@/lib/content/navigation";
 import { useDisclosure } from "@/hooks/useDisclosure";
-import { useNavIndicator } from "@/hooks/useNavIndicator";
+import { useActiveNavHref } from "@/hooks/useActiveNavHref";
 import { useNavTheme } from "@/hooks/useNavTheme";
+import { DesktopNav } from "./DesktopNav";
 import { MobileMenu } from "./MobileMenu";
 
 /**
@@ -22,7 +21,7 @@ interface NavbarProps {
 
 export function Navbar({ logoUrl }: NavbarProps) {
   const menu = useDisclosure();
-  const { containerRef, registerItem, setActiveHref, rect } = useNavIndicator();
+  const activeHref = useActiveNavHref();
   const detectedTheme = useNavTheme();
   // The mobile overlay is always dark, so force the dark treatment while open.
   const theme = menu.isOpen ? "dark" : detectedTheme;
@@ -42,60 +41,7 @@ export function Navbar({ logoUrl }: NavbarProps) {
         >
           <Logo src={logoUrl} variant={isLight ? "dark" : "light"} />
 
-          {/* Desktop navigation */}
-          <nav
-            ref={containerRef}
-            className="relative hidden items-center gap-1 md:flex"
-          >
-            {/* Sliding highlight that follows the active anchor. */}
-            <span
-              aria-hidden
-              className={cn(
-                "pointer-events-none absolute rounded-full transition-all duration-300 ease-out",
-                isLight ? "bg-wine/10" : "bg-white/10",
-                rect ? "opacity-100" : "opacity-0",
-              )}
-              style={
-                rect
-                  ? {
-                      left: rect.left,
-                      top: rect.top,
-                      width: rect.width,
-                      height: rect.height,
-                    }
-                  : undefined
-              }
-            />
-            {NAV_LINKS.map((link) => (
-              <Link
-                key={link.href}
-                ref={registerItem(link.href)}
-                href={link.href}
-                onClick={() => setActiveHref(link.href)}
-                className={cn(
-                  "relative z-10 rounded-full px-4 py-2 text-sm font-medium transition-colors",
-                  isLight
-                    ? "text-wine/80 hover:text-wine"
-                    : "text-white/90 hover:text-white",
-                )}
-              >
-                {link.label}
-              </Link>
-            ))}
-
-            {/* Contact CTA — a filled pill that inverts with the theme. */}
-            <Link
-              href={CONTACT_LINK.href}
-              className={cn(
-                "relative z-10 ml-2 rounded-full px-6 py-2.5 text-sm font-semibold transition-colors",
-                isLight
-                  ? "bg-wine text-cream hover:bg-wine/90"
-                  : "bg-white/25 text-white hover:bg-white/35",
-              )}
-            >
-              {CONTACT_LINK.label}
-            </Link>
-          </nav>
+          <DesktopNav isLight={isLight} activeHref={activeHref} />
 
           {/* Mobile menu toggle */}
           <button
@@ -117,7 +63,7 @@ export function Navbar({ logoUrl }: NavbarProps) {
         </div>
       </div>
 
-      <MobileMenu isOpen={menu.isOpen} onClose={menu.close} />
+      <MobileMenu isOpen={menu.isOpen} onClose={menu.close} activeHref={activeHref} />
     </header>
   );
 }

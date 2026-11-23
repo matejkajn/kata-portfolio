@@ -70,6 +70,8 @@ export interface Reference {
 export interface NavLink {
   label: string;
   href: string;
+  /** Homepage section that marks this link active while it is in view. */
+  sectionId: string;
 }
 
 /**

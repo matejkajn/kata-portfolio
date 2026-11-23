@@ -65,11 +65,11 @@ export function DesktopNav({ isLight, activeHref }: DesktopNavProps) {
         href={CONTACT_LINK.href}
         aria-current={isContactActive ? "location" : undefined}
         className={cn(
-          "relative z-10 ml-2 rounded-full px-6 py-2.5 text-sm font-semibold ring-2 ring-transparent transition-all",
+          "relative z-10 ml-2 rounded-full px-6 py-2.5 text-sm font-semibold transition-colors",
+          // While the contact section is in view it keeps its hover look.
           isLight
-            ? "bg-wine text-cream hover:bg-wine/85"
-            : "bg-white/25 text-white hover:bg-white/40",
-          isContactActive && (isLight ? "ring-wine/30" : "ring-white/60"),
+            ? cn("text-cream hover:bg-wine/85", isContactActive ? "bg-wine/85" : "bg-wine")
+            : cn("text-white hover:bg-white/40", isContactActive ? "bg-white/40" : "bg-white/25"),
         )}
       >
         {CONTACT_LINK.label}

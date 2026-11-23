@@ -48,6 +48,8 @@ export default async function RootLayout({
   return (
     <html
       lang="cs"
+      // Lets Next.js turn smooth scrolling off during route changes.
+      data-scroll-behavior="smooth"
       className={`${dmSans.variable} ${montserrat.variable} h-full antialiased`}
       style={themeStyle(theme)}
     >

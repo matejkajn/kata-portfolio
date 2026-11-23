@@ -1,5 +1,5 @@
-import { ButtonLink } from "@/components/ui/Button";
 import { HighlightedText } from "@/components/ui/HighlightedText";
+import { ScrollDownLink } from "@/components/ui/ScrollDownLink";
 import { cn } from "@/lib/cn";
 import { GUTTERS } from "@/lib/layout";
 import type { SiteSettings } from "@/types";
@@ -8,7 +8,7 @@ interface HeroSectionProps {
   content: SiteSettings["hero"];
 }
 
-/** Landing hero with the headline, intro copy and a portfolio CTA. */
+/** Landing hero with the headline, intro copy and a scroll-down hint. */
 export function HeroSection({ content }: HeroSectionProps) {
   return (
     <section className={cn("min-h-svh pb-24 pt-36 md:pb-32 md:pt-[234px]", GUTTERS.home)}>
@@ -21,9 +21,7 @@ export function HeroSection({ content }: HeroSectionProps) {
         <p className="max-w-2xl text-base leading-relaxed text-white/90 sm:text-xl md:max-w-[880px] md:text-2xl md:leading-[30px]">
           {content.text}
         </p>
-        <ButtonLink href="#portfolio" variant="glass" className="mt-2 px-12 py-3 text-xl md:mt-0 md:py-3.5 md:text-2xl">
-          {content.buttonLabel}
-        </ButtonLink>
+        <ScrollDownLink href="#o-mne" label="Posunout dolů" className="mt-10 md:mt-20" />
       </div>
     </section>
   );

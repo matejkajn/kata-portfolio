@@ -128,7 +128,6 @@ export const SETTINGS_SCHEMA: SettingsSectionDef[] = [
     fields: [
       { key: "title", label: "Nadpis", kind: "textarea", hint: HIGHLIGHT_HINT },
       { key: "text", label: "Text", kind: "textarea" },
-      { key: "buttonLabel", label: "Text tlačítka", kind: "text" },
     ],
   },
   {

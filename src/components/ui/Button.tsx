@@ -7,15 +7,24 @@ type Variant = "primary" | "glass";
 
 const VARIANT_CLASSES: Record<Variant, string> = {
   primary: "bg-navy font-medium text-cream hover:bg-navy/90",
-  glass: "bg-white/25 font-bold text-white backdrop-blur-sm hover:bg-white/35",
+  glass: "bg-white/25 font-medium text-white backdrop-blur-sm hover:bg-white/35",
+};
+
+/** `md` — default; `lg` — prominent section CTAs. */
+type Size = "md" | "lg";
+
+const SIZE_CLASSES: Record<Size, string> = {
+  md: "px-10 py-2.5 text-lg",
+  lg: "px-14 py-3 text-xl",
 };
 
 const BASE =
-  "inline-flex items-center justify-center rounded-xl px-10 py-2.5 text-lg transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent";
+  "inline-flex items-center justify-center rounded-xl transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent";
 
 interface ButtonAsLinkProps {
   href: string;
   variant?: Variant;
+  size?: Size;
   className?: string;
   children: ReactNode;
 }
@@ -24,11 +33,12 @@ interface ButtonAsLinkProps {
 export function ButtonLink({
   href,
   variant = "primary",
+  size = "md",
   className,
   children,
 }: ButtonAsLinkProps) {
   return (
-    <Link href={href} className={cn(BASE, VARIANT_CLASSES[variant], className)}>
+    <Link href={href} className={cn(BASE, SIZE_CLASSES[size], VARIANT_CLASSES[variant], className)}>
       {children}
     </Link>
   );
@@ -36,17 +46,19 @@ export function ButtonLink({
 
 interface ButtonProps extends ComponentPropsWithoutRef<"button"> {
   variant?: Variant;
+  size?: Size;
 }
 
 /** A pill button (for forms / actions) styled per the design system. */
 export function Button({
   variant = "primary",
+  size = "md",
   className,
   children,
   ...props
 }: ButtonProps) {
   return (
-    <button className={cn(BASE, VARIANT_CLASSES[variant], className)} {...props}>
+    <button className={cn(BASE, SIZE_CLASSES[size], VARIANT_CLASSES[variant], className)} {...props}>
       {children}
     </button>
   );

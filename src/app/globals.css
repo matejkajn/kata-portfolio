@@ -30,6 +30,19 @@
      set per stain through --drift-from / --drift-to. */
   --animate-stain-drift: stain-drift 18s ease-in-out infinite alternate;
 
+  /* Slow up-and-down bob of the hero scroll hint. */
+  --animate-bob-down: bob-down 2s ease-in-out infinite;
+
+  @keyframes bob-down {
+    0%,
+    100% {
+      transform: translateY(-4px);
+    }
+    50% {
+      transform: translateY(8px);
+    }
+  }
+
   @keyframes stain-drift {
     from {
       transform: translateX(var(--drift-from, -10%));
@@ -37,6 +50,13 @@
     to {
       transform: translateX(var(--drift-to, 10%));
     }
+  }
+}
+
+/* Anchor links (scroll hint, menu) glide to their section. */
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
   }
 }
 

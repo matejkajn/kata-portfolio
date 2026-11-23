@@ -9,7 +9,7 @@ interface ReferenceCardProps {
 /** A client testimonial: dark header with portrait and attribution, rating badge, quote. */
 export function ReferenceCard({ reference }: ReferenceCardProps) {
   return (
-    <article className="flex h-full flex-col rounded-xl bg-cream shadow-[0_24px_48px_-28px_color-mix(in_oklab,var(--color-wine)_55%,transparent)]">
+    <article className="flex h-full flex-col rounded-xl bg-cream shadow-card">
       <header className="relative rounded-xl bg-wine px-5 pb-16 pt-5 text-blush">
         <div className="flex items-start gap-5 sm:gap-6">
           <ReferenceAvatar name={reference.author} photoUrl={reference.photoUrl} />

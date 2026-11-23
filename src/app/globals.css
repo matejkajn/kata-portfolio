@@ -18,6 +18,11 @@
   --color-muted: #836a71; /* secondary text */
   --color-line: #e6e6ee; /* hairline borders (administration) */
 
+  /* Soft, diffuse lift for cards on light backgrounds. */
+  --shadow-card:
+    0 1px 3px color-mix(in oklab, var(--color-wine) 6%, transparent),
+    0 12px 40px -8px color-mix(in oklab, var(--color-wine) 20%, transparent);
+
   --font-sans: var(--font-montserrat);
   --font-heading: var(--font-dm-sans);
 

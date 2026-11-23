@@ -2,6 +2,8 @@
 
 import { CarouselDots } from "@/components/ui/CarouselDots";
 import { useCarousel } from "@/hooks/useCarousel";
+import { cn } from "@/lib/cn";
+import { HOME_GUTTER_BLEED } from "@/lib/layout";
 import type { Reference } from "@/types";
 import { ReferenceCard } from "./ReferenceCard";
 
@@ -21,7 +23,10 @@ export function ReferenceCarousel({ references }: ReferenceCarouselProps) {
       {/* Vertical padding leaves room for the card shadows inside the scroll area. */}
       <div
         ref={trackRef}
-        className="scrollbar-none -mx-4 flex snap-x snap-mandatory scroll-px-4 gap-6 overflow-x-auto px-4 sm:-mx-6 sm:scroll-px-6 sm:px-6 pb-10 pt-4 md:gap-12"
+        className={cn(
+          "scrollbar-none flex snap-x snap-mandatory gap-6 overflow-x-auto pb-14 pt-6 md:gap-12",
+          HOME_GUTTER_BLEED,
+        )}
       >
         {references.map((reference) => (
           <div

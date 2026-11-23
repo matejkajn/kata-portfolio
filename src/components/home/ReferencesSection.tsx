@@ -12,7 +12,7 @@ interface ReferencesSectionProps {
 /** "Reference klientů" — testimonials from past clients. */
 export function ReferencesSection({ content, references }: ReferencesSectionProps) {
   return (
-    <Section id="reference" maxWidth="max-w-[96rem]">
+    <Section id="reference" gutter="home" maxWidth="max-w-none">
       <SectionHeading
         title={<HighlightedText text={content.heading} />}
         subtitle={content.subtitle}

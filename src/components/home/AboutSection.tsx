@@ -13,7 +13,8 @@ export function AboutSection({ content }: AboutSectionProps) {
   return (
     <Section
       id="o-mne"
-      maxWidth="max-w-[96rem]"
+      gutter="home"
+      maxWidth="max-w-none"
       innerClassName="grid items-center gap-12 md:grid-cols-2"
     >
       <div className="flex flex-col gap-5">

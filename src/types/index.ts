@@ -137,8 +137,12 @@ export interface SiteSettings {
     email: string;
     instagramLabel: string;
     instagramUrl: string;
+    /** Instagram icon (local path or storage URL); empty falls back to the default. */
+    instagramIconUrl: string;
     linkedinLabel: string;
     linkedinUrl: string;
+    /** LinkedIn icon (local path or storage URL); empty falls back to the default. */
+    linkedinIconUrl: string;
     copyright: string;
   };
 }

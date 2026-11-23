@@ -1,5 +1,6 @@
-import Image from "next/image";
+import { SocialLink } from "@/components/layout/SocialLink";
 import { Logo } from "@/components/ui/Logo";
+import { DEFAULT_SITE_SETTINGS } from "@/lib/content/siteSettings";
 import type { SiteSettings } from "@/types";
 
 interface FooterProps {
@@ -28,37 +29,19 @@ export function Footer({ content, brand }: FooterProps) {
               {content.email}
             </a>
 
-            <a
+            <SocialLink
               href={content.instagramUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-3 text-sm text-wine hover:text-navy"
-            >
-              <Image
-                src="/footer/logo_instagram.png"
-                alt=""
-                width={18}
-                height={18}
-                className="size-4.5"
-              />
-              {content.instagramLabel}
-            </a>
+              label={content.instagramLabel}
+              iconUrl={content.instagramIconUrl}
+              fallbackIconUrl={DEFAULT_SITE_SETTINGS.footer.instagramIconUrl}
+            />
 
-            <a
+            <SocialLink
               href={content.linkedinUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-3 text-sm text-wine hover:text-navy"
-            >
-              <Image
-                src="/footer/logo_linkedin.png"
-                alt=""
-                width={18}
-                height={18}
-                className="size-4.5"
-              />
-              {content.linkedinLabel}
-            </a>
+              label={content.linkedinLabel}
+              iconUrl={content.linkedinIconUrl}
+              fallbackIconUrl={DEFAULT_SITE_SETTINGS.footer.linkedinIconUrl}
+            />
           </div>
         </div>
 

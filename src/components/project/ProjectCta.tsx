@@ -13,7 +13,7 @@ interface ProjectCtaProps {
  */
 export function ProjectCta({ content }: ProjectCtaProps) {
   return (
-    <Section>
+    <Section gutter="project" maxWidth="max-w-none" className="pt-10 md:pt-10">
       <div className="bg-wine-glow flex flex-col items-center gap-8 rounded-3xl px-6 py-16 text-center sm:py-20">
         <h2 className="max-w-2xl text-3xl font-normal leading-tight text-cream sm:text-5xl">
           <HighlightedText text={content.heading} />

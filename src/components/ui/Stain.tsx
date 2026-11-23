@@ -1,9 +1,11 @@
 import type { CSSProperties } from "react";
 
-import { STAIN_BLUR, STAIN_VIEWBOX, type StainDef } from "@/lib/content/stains";
+import type { StainDef, StainLayout } from "@/lib/content/stains";
 
 interface StainProps {
   stain: StainDef;
+  viewBox: StainLayout["viewBox"];
+  blur: number;
 }
 
 /**
@@ -15,7 +17,7 @@ interface StainProps {
  * visible` lets the blur extend past the viewBox so no hard edge shows when
  * the layer moves (the parent clips it).
  */
-export function Stain({ stain }: StainProps) {
+export function Stain({ stain, viewBox, blur }: StainProps) {
   const { id, ellipse, gradient, filterRegion, drift } = stain;
   const style = {
     "--drift-from": drift.from,
@@ -26,7 +28,7 @@ export function Stain({ stain }: StainProps) {
 
   return (
     <svg
-      viewBox={`0 0 ${STAIN_VIEWBOX.width} ${STAIN_VIEWBOX.height}`}
+      viewBox={`0 0 ${viewBox.width} ${viewBox.height}`}
       preserveAspectRatio="xMidYMid slice"
       overflow="visible"
       className="absolute inset-0 size-full animate-stain-drift will-change-transform motion-reduce:animate-none"
@@ -39,7 +41,7 @@ export function Stain({ stain }: StainProps) {
           colorInterpolationFilters="sRGB"
           {...filterRegion}
         >
-          <feGaussianBlur stdDeviation={STAIN_BLUR} />
+          <feGaussianBlur stdDeviation={blur} />
         </filter>
         <linearGradient id={`${id}-fill`} gradientUnits="userSpaceOnUse" {...gradient}>
           <stop style={{ stopColor: "var(--color-stain)" }} />

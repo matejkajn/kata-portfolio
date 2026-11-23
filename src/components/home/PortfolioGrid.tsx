@@ -17,7 +17,7 @@ export function PortfolioGrid({
 }: PortfolioGridProps) {
   return (
     <>
-      <div className="mt-12 grid grid-cols-1 gap-6 md:grid-cols-2 md:gap-8">
+      <div className="mt-12 grid grid-cols-1 gap-[42px] md:grid-cols-2 md:gap-8">
         {projects.map((project) => (
           <ProjectCard key={project.slug} project={project} />
         ))}
@@ -25,7 +25,7 @@ export function PortfolioGrid({
 
       {moreHref && (
         <div className="mt-12 flex justify-center">
-          <ButtonLink href={moreHref} className="px-14 py-3 text-xl">
+          <ButtonLink href={moreHref} size="lg">
             {moreLabel}
           </ButtonLink>
         </div>

@@ -13,7 +13,10 @@ export function AboutSection({ content }: AboutSectionProps) {
   return (
     <Section
       id="o-mne"
-      maxWidth="max-w-[96rem]"
+      gutter="home"
+      maxWidth="max-w-none"
+      // Mobile: the wine backdrop ends one gutter below the portrait, same as the sides.
+      className="pb-4 sm:pb-6 md:pb-28"
       innerClassName="grid items-center gap-12 md:grid-cols-2"
     >
       <div className="flex flex-col gap-5">

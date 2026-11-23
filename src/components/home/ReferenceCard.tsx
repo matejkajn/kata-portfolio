@@ -1,15 +1,23 @@
+import { cn } from "@/lib/cn";
 import type { Reference } from "@/types";
 import { ReferenceAvatar } from "./ReferenceAvatar";
 import { StarRating } from "./StarRating";
 
 interface ReferenceCardProps {
   reference: Reference;
+  className?: string;
 }
 
-/** A client testimonial: dark header with portrait and attribution, rating badge, quote. */
-export function ReferenceCard({ reference }: ReferenceCardProps) {
+/**
+ * A client testimonial: dark header with portrait and attribution, rating
+ * badge, quote. Lays its header and quote on the parent's rows (subgrid), so
+ * headers line up across a row of cards; outside a grid it stacks normally.
+ */
+export function ReferenceCard({ reference, className }: ReferenceCardProps) {
   return (
-    <article className="flex h-full flex-col rounded-xl bg-cream shadow-[0_24px_48px_-28px_color-mix(in_oklab,var(--color-wine)_55%,transparent)]">
+    <article
+      className={cn("grid grid-rows-subgrid rounded-xl bg-cream shadow-card", className)}
+    >
       <header className="relative rounded-xl bg-wine px-5 pb-16 pt-5 text-blush">
         <div className="flex items-start gap-5 sm:gap-6">
           <ReferenceAvatar name={reference.author} photoUrl={reference.photoUrl} />
@@ -29,7 +37,7 @@ export function ReferenceCard({ reference }: ReferenceCardProps) {
         />
       </header>
 
-      <blockquote className="flex-1 px-6 pb-12 pt-14 text-center text-base leading-relaxed text-ink sm:px-8">
+      <blockquote className="px-6 pb-12 pt-14 text-center text-base leading-relaxed text-ink sm:px-8">
         {reference.quote}
       </blockquote>
     </article>

@@ -128,7 +128,6 @@ export const SETTINGS_SCHEMA: SettingsSectionDef[] = [
     fields: [
       { key: "title", label: "Nadpis", kind: "textarea", hint: HIGHLIGHT_HINT },
       { key: "text", label: "Text", kind: "textarea" },
-      { key: "buttonLabel", label: "Text tlačítka", kind: "text" },
     ],
   },
   {
@@ -202,8 +201,20 @@ export const SETTINGS_SCHEMA: SettingsSectionDef[] = [
       { key: "email", label: "E-mail", kind: "email" },
       { key: "instagramLabel", label: "Instagram — text", kind: "text" },
       { key: "instagramUrl", label: "Instagram — odkaz", kind: "url" },
+      {
+        key: "instagramIconUrl",
+        label: "Instagram — ikona",
+        kind: "image",
+        hint: "Malá čtvercová ikona (ideálně PNG nebo SVG s průhledným pozadím). Po odebrání se použije výchozí ikona.",
+      },
       { key: "linkedinLabel", label: "LinkedIn — text", kind: "text" },
       { key: "linkedinUrl", label: "LinkedIn — odkaz", kind: "url" },
+      {
+        key: "linkedinIconUrl",
+        label: "LinkedIn — ikona",
+        kind: "image",
+        hint: "Malá čtvercová ikona (ideálně PNG nebo SVG s průhledným pozadím). Po odebrání se použije výchozí ikona.",
+      },
       { key: "copyright", label: "Copyright", kind: "text" },
     ],
   },

@@ -71,8 +71,10 @@ export const DEFAULT_SITE_SETTINGS: SiteSettings = {
     email: "hrselova.katerina@gmail.com",
     instagramLabel: "katerina.graphics",
     instagramUrl: "https://instagram.com/katerina.graphics",
+    instagramIconUrl: "/footer/logo_instagram.png",
     linkedinLabel: "Kateřina Hršelová",
     linkedinUrl: "https://www.linkedin.com/in/kateřina-hršelová-35a324279",
+    linkedinIconUrl: "/footer/logo_linkedin.png",
     copyright: "© 2026 Kateřina Hršelová. All rights reserved.",
   },
 };

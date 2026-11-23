@@ -7,6 +7,8 @@ import { ProjectHeader } from "@/components/project/ProjectHeader";
 import { ProjectOverview } from "@/components/project/ProjectOverview";
 import { ProjectGallery } from "@/components/project/ProjectGallery";
 import { ProjectCta } from "@/components/project/ProjectCta";
+import { cn } from "@/lib/cn";
+import { GUTTERS } from "@/lib/layout";
 import { getSiteSettings } from "@/lib/supabase/content";
 import { getProjectBySlug, getProjects } from "@/lib/supabase/projects";
 import type { ProjectImage } from "@/types";
@@ -59,7 +61,7 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
     <>
       <Navbar logoUrl={settings.brand.logoUrl} />
       <main className="flex-1" data-nav-theme="light">
-        <article className="mx-auto w-full max-w-7xl px-4 pt-28 sm:px-6 md:pt-36">
+        <article className={cn("w-full pt-28 md:pt-36", GUTTERS.project)}>
           <div className="flex flex-col gap-12 md:gap-16">
             <ProjectHeader title={project.title} hero={heroImage} />
             <ProjectOverview

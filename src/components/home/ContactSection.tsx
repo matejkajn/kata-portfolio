@@ -14,7 +14,8 @@ export function ContactSection({ content }: ContactSectionProps) {
   return (
     <Section
       id="kontakt"
-      maxWidth="max-w-[96rem]"
+      gutter="home"
+      maxWidth="max-w-none"
       className="bg-wine-glow rounded-t-[2rem] md:rounded-t-[40px]"
       innerClassName="grid items-center gap-12 md:grid-cols-2"
     >

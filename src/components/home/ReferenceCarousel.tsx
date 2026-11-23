@@ -2,6 +2,8 @@
 
 import { CarouselDots } from "@/components/ui/CarouselDots";
 import { useCarousel } from "@/hooks/useCarousel";
+import { cn } from "@/lib/cn";
+import { HOME_GUTTER_BLEED } from "@/lib/layout";
 import type { Reference } from "@/types";
 import { ReferenceCard } from "./ReferenceCard";
 
@@ -18,18 +20,22 @@ export function ReferenceCarousel({ references }: ReferenceCarouselProps) {
 
   return (
     <div className="mt-10">
-      {/* Vertical padding leaves room for the card shadows inside the scroll area. */}
+      {/* Vertical padding leaves room for the card shadows inside the scroll area.
+          The two shared rows (header, quote) are inherited by every card through
+          subgrid, so all wine headers end on the same line. */}
       <div
         ref={trackRef}
-        className="scrollbar-none -mx-4 flex snap-x snap-mandatory scroll-px-4 gap-6 overflow-x-auto px-4 sm:-mx-6 sm:scroll-px-6 sm:px-6 pb-10 pt-4 md:gap-12"
+        className={cn(
+          "scrollbar-none grid grid-flow-col grid-rows-[auto_1fr] auto-cols-[85%] gap-x-6 snap-x snap-mandatory overflow-x-auto pb-14 pt-6 sm:auto-cols-[calc((100%-1.5rem)/2)] md:auto-cols-[calc((100%-3rem)/2)] md:gap-x-12 lg:auto-cols-[calc((100%-6rem)/3)]",
+          HOME_GUTTER_BLEED,
+        )}
       >
         {references.map((reference) => (
-          <div
+          <ReferenceCard
             key={reference.id ?? reference.author}
-            className="shrink-0 basis-[85%] snap-start sm:basis-[calc((100%-1.5rem)/2)] md:basis-[calc((100%-3rem)/2)] lg:basis-[calc((100%-6rem)/3)]"
-          >
-            <ReferenceCard reference={reference} />
-          </div>
+            reference={reference}
+            className="row-span-2 snap-start"
+          />
         ))}
       </div>
 

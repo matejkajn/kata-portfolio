@@ -18,12 +18,30 @@
   --color-muted: #836a71; /* secondary text */
   --color-line: #e6e6ee; /* hairline borders (administration) */
 
+  /* Soft, diffuse lift for cards on light backgrounds. */
+  --shadow-card:
+    0 1px 3px color-mix(in oklab, var(--color-wine) 6%, transparent),
+    0 12px 40px -8px color-mix(in oklab, var(--color-wine) 20%, transparent);
+
   --font-sans: var(--font-montserrat);
   --font-heading: var(--font-dm-sans);
 
   /* Horizontal drift of the homepage background stains. The travel range is
      set per stain through --drift-from / --drift-to. */
   --animate-stain-drift: stain-drift 18s ease-in-out infinite alternate;
+
+  /* Slow up-and-down bob of the hero scroll hint. */
+  --animate-bob-down: bob-down 2s ease-in-out infinite;
+
+  @keyframes bob-down {
+    0%,
+    100% {
+      transform: translateY(-4px);
+    }
+    50% {
+      transform: translateY(8px);
+    }
+  }
 
   @keyframes stain-drift {
     from {
@@ -32,6 +50,13 @@
     to {
       transform: translateX(var(--drift-to, 10%));
     }
+  }
+}
+
+/* Anchor links (scroll hint, menu) glide to their section. */
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
   }
 }
 

@@ -15,7 +15,7 @@ export async function PortfolioSection({ content }: PortfolioSectionProps) {
   const hasMore = projects.length > content.featuredCount;
 
   return (
-    <Section id="portfolio" maxWidth="max-w-[96rem]">
+    <Section id="portfolio" gutter="home" maxWidth="max-w-none">
       <SectionHeading
         title={content.heading}
         subtitle={content.subtitle}

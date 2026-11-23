@@ -7,12 +7,14 @@ import { CONTACT_LINK, NAV_LINKS } from "@/lib/content/navigation";
 interface MobileMenuProps {
   isOpen: boolean;
   onClose: () => void;
+  /** Href of the link matching the visitor's position, if any. */
+  activeHref: string | null;
 }
 
 /**
  * Full-screen navigation overlay shown on mobile (see menu_mobil design).
  */
-export function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
+export function MobileMenu({ isOpen, onClose, activeHref }: MobileMenuProps) {
   return (
     <div
       id="mobile-menu"
@@ -30,7 +32,11 @@ export function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
             key={link.href}
             href={link.href}
             onClick={onClose}
-            className="text-2xl font-medium text-white/90 transition-colors hover:text-accent"
+            aria-current={link.href === activeHref ? "location" : undefined}
+            className={cn(
+              "text-2xl font-medium transition-colors hover:text-accent",
+              link.href === activeHref ? "text-accent" : "text-white/90",
+            )}
           >
             {link.label}
           </Link>
@@ -38,7 +44,11 @@ export function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
         <Link
           href={CONTACT_LINK.href}
           onClick={onClose}
-          className="rounded-full bg-white/15 px-8 py-2.5 text-2xl font-medium text-white transition-colors hover:bg-white/25"
+          aria-current={CONTACT_LINK.href === activeHref ? "location" : undefined}
+          className={cn(
+            "rounded-full px-8 py-2.5 text-2xl font-medium text-white transition-colors hover:bg-white/25",
+            CONTACT_LINK.href === activeHref ? "bg-white/25" : "bg-white/15",
+          )}
         >
           {CONTACT_LINK.label}
         </Link>
